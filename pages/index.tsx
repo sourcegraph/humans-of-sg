@@ -3,23 +3,8 @@ import styles from "../styles/Home.module.css";
 
 import Navbar from "../components/Navbar";
 
-const Home = () => {
-  const options = {
-    // mode: "no-cors",
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: "Basic ",
-    },
-  };
-
-  fetch(
-    "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/employees/directory",
-    options,
-  )
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
+const Home = ({ data }) => {
+  console.log({ data });
   return (
     <div className={styles.container}>
       <Head>
@@ -37,5 +22,29 @@ const Home = () => {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  const options = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: "Basic ",
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+
+  const data = await fetch(
+    "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/employees/directory",
+    options
+  )
+    .then((response) => response.json())
+    .catch((err) => console.error(err));
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
 
 export default Home;

@@ -1,8 +1,6 @@
 import styles from "./EmployeeCard.module.css";
 
 const EmployeeCard = ({ employee }) => {
-  console.log(employee, "employee card");
-
   return (
     <div className={styles.card}>
       <div>

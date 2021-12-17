@@ -6,12 +6,13 @@ import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 const Home = ({ data }) => {
   console.log({ data });
 
-  let employeeData = "";
-  if (data) {
-    employeeData = data.employees.map((employee, index) => {
-      return <EmployeeCard employee={employee} />;
-    });
+  if (!data) {
+    return <h4>Theres nothing to show right now</h4>;
   }
+
+  let employeeData = data.employees.map((employee, index) => {
+    return <EmployeeCard employee={employee} />;
+  });
 
   return (
     <>
@@ -36,8 +37,7 @@ export async function getServerSideProps() {
     method: "GET",
     headers: {
       Accept: "application/json",
-      Authorization:
-        "Basic MWVlZGNjMmEzODg1ZTQyMjc4YmU2NGJlM2MxNDZiMmM4YTE1MDUwNDp0ZXN0eQ==",
+      Authorization: `Basic ${process.env.API_KEY}`,
       "Access-Control-Allow-Origin": "*",
     },
   };

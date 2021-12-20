@@ -25,7 +25,25 @@
 }
 
 .modalBody {
+  display: flex;
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  justify-content: space-evenly;
+}
+
+.modalLeftPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalRightPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: right;
 }

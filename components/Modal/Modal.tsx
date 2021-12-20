@@ -13,19 +13,24 @@ const Modal = ({ modal, setModal, employee }) => {
           <h4 className={styles.modalTitle}>{employee.displayName}</h4>
         </div>
         <div className={styles.modalBody}>
-          <div className="leftSide">
+          <div className={styles.modalLeftPanel}>
             <div className="employeePhoto">
               <img src={employee.photoUrl} />
             </div>
-            <div className="employeeLinks"></div>
+            <div className="employeeLinks">
+              <p>hi, I'm test link #1</p>
+              <p>hi, I'm test link #2</p>
+            </div>
           </div>
-          <div className="rightSide">
+          <div className={styles.modalRightPanel}>
             <div className="employeeInfo">
               <p> {employee.displayName}</p>
               <p> {employee.department}</p>
               <p> {employee.jobTitle}</p>
             </div>
-            <div className="employeeBio"></div>
+            <div className="employeeBio">
+              <p>hi, I'm a test bio</p>
+            </div>
           </div>
         </div>
         <div className={styles.modalFooter}>

@@ -23,13 +23,18 @@ const Modal = ({ modal, setModal, employee }) => {
             </div>
           </div>
           <div className={styles.modalRightPanel}>
-            <div className="employeeInfo">
+            <div className={styles.employeeInfo}>
               <p> {employee.displayName}</p>
               <p> {employee.department}</p>
               <p> {employee.jobTitle}</p>
             </div>
-            <div className="employeeBio">
-              <p>hi, I'm a test bio</p>
+            <div className={styles.employeeBio}>
+              <p>
+                hi, I'm a test bio. hi, I'm a test bio. hi, I'm a test bio. hi,
+                I'm a test bio!! Yes, thats right! I'm a test bio and I love it.
+                Lets see what happens as my bio gets longer! Oh wow! It's
+                behaving as expected
+              </p>
             </div>
           </div>
         </div>

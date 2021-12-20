@@ -43,6 +43,12 @@
   justify-content: space-between;
 }
 
+.employeeInfo {
+  /* display: flex;
+  flex-direction: column; */
+  text-align: right;
+}
+
 .modalFooter {
   display: flex;
   justify-content: right;

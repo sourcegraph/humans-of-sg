@@ -4,8 +4,6 @@ import Navbar from "../components/Navbar/Navbar";
 import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 
 const Home = ({ data }) => {
-  console.log({ data });
-
   if (!data) {
     return <h4>Theres nothing to show right now</h4>;
   }

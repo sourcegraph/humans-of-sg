@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar/Navbar";
 import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
+import Image from "next/image";
+import logo from "../assets/sg_logo.png";
 
 const Home = ({ data }) => {
   if (!data) {
@@ -15,15 +17,24 @@ const Home = ({ data }) => {
   return (
     <>
       <Head>
-        <title>Humans of Sourcegraph</title>
+        <title>HoS</title>
         <link rel="icon" href="/icon-32.png" />
       </Head>
-
       <Navbar />
-      <div>
-        <h1>Sourcegraph </h1>
-        <h3>Humans of Sourcegraph</h3>
-        <h4>Familiarize yourself with our teammates and organization.</h4>
+      <div className={styles.logo}>
+        <Image
+          className={styles.imgComponent}
+          src={logo}
+          alt="Sourcegraph logo"
+          width={320}
+          height={54}
+        />
+      </div>
+      <div className={styles.pageDescription}>
+        <p className={styles.heavyText}>Humans of Sourcegraph</p>
+        <p className={styles.mutedText}>
+          Familiarize yourself with our teammates and organization.
+        </p>
       </div>
       <div className={styles.allEmployees}>{employeeData}</div>
     </>

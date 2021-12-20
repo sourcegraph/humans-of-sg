@@ -5,3 +5,20 @@
   justify-content: flex-end;
   row-gap: 10px;
 }
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.pageDescription {
+  text-align: center;
+}
+
+.heavyText {
+  font-weight: bold;
+}
+
+.mutedText {
+  font-style: italic;
+}

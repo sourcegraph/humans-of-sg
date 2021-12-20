@@ -3,11 +3,15 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <nav className="nav">
-      <li>Sourcegraph</li>
-      <li>About Sourcegraph</li>
-      <li>Sourcegraph.com</li>
-    </nav>
+    <div className={styles.nav}>
+      <div className={styles.leftLinks}>
+        <p>Sourcegraph</p>
+      </div>
+      <div className={styles.rightLinks}>
+        <p>About Sourcegraph</p>
+        <p>Sourcegraph.com</p>
+      </div>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-.modal {
+.modalBackground {
   position: fixed;
   left: 0;
   top: 0;
@@ -49,6 +49,14 @@
   text-align: right;
 }
 
+.employeeInfoText {
+  margin-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.employeeBioText {
+  padding: 0 15px 0 15px;
+}
 .modalFooter {
   display: flex;
   justify-content: right;

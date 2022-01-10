@@ -5,12 +5,14 @@ import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 import Image from "next/image";
 import logo from "../assets/sg_logo.png";
 
-const Home = ({ data }) => {
-  if (!data) {
+const Home = ({ customReport }) => {
+  console.log(customReport);
+
+  if (!customReport) {
     return <h4>Theres nothing to show right now</h4>;
   }
 
-  let employeeData = data.employees.map((employee, index) => {
+  let customReportData = customReport.employees.map((employee, index) => {
     return <EmployeeCard employee={employee} />;
   });
 
@@ -36,31 +38,51 @@ const Home = ({ data }) => {
           Familiarize yourself with our teammates and organization.
         </p>
       </div>
-      <div className={styles.allEmployees}>{employeeData}</div>
+      <div className={styles.allEmployees}>{customReportData}</div>
     </>
   );
 };
 
 export async function getServerSideProps() {
   const options = {
-    method: "GET",
+    method: "POST",
     headers: {
       Accept: "application/json",
       Authorization: `Basic ${process.env.API_KEY}`,
       "Access-Control-Allow-Origin": "*",
+      body: JSON.stringify({
+        fields: [
+          "displayName",
+          "firstName",
+          "lastName",
+          "preferredName",
+          "jobTitle",
+          "workPhone",
+          "mobilePhone",
+          "workEmail",
+          "department",
+          "division",
+          "pronouns",
+          "supervisor",
+          "photoUploaded",
+          "photoUrl",
+          "hireDate",
+        ],
+      }),
     },
   };
 
-  const data = await fetch(
-    "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/employees/directory",
+  const customReport = await fetch(
+    "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
     options,
   )
     .then((response) => response.json())
+    .then((response) => console.log(response))
     .catch((err) => console.error(err));
 
   return {
     props: {
-      data,
+      customReport,
     },
   };
 }

@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 import Image from "next/image";
 import logo from "../assets/sg_logo.png";
+import { useEffect } from "react";
 
 const Home = ({ customReport }) => {
   console.log(customReport);
@@ -47,37 +48,29 @@ export async function getServerSideProps() {
   const options = {
     method: "POST",
     headers: {
-      Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Basic ${process.env.API_KEY}`,
-      "Access-Control-Allow-Origin": "*",
-      body: JSON.stringify({
-        fields: [
-          "displayName",
-          "firstName",
-          "lastName",
-          "preferredName",
-          "jobTitle",
-          "workPhone",
-          "mobilePhone",
-          "workEmail",
-          "department",
-          "division",
-          "pronouns",
-          "supervisor",
-          "photoUploaded",
-          "photoUrl",
-          "hireDate",
-        ],
-      }),
     },
+    body: JSON.stringify({
+      fields: [
+        "displayName",
+        "customGitHub",
+        "jobTitle",
+        "workEmail",
+        "department",
+        // For some reason photoUrl only works if photoUploaded is also requested at the same time
+        "photoUploaded",
+        "photoUrl",
+        "hireDate",
+      ],
+    }),
   };
 
   const customReport = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
-    options,
+    options
   )
     .then((response) => response.json())
-    .then((response) => console.log(response))
     .catch((err) => console.error(err));
 
   return {

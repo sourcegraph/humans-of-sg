@@ -2,10 +2,23 @@
   display: flex;
   flex-direction: column;
   border: 2px solid black;
-  width: 25%;
+  width: 300px;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+}
+
+.employeeInfo {
 }
 
 .employeeName {
+  text-align: center;
   font-weight: bold;
   color: navy;
+}
+
+.jobDetails {
+  padding-left: 3%;
 }

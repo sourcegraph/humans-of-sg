@@ -15,6 +15,7 @@ const EmployeeCard = ({ employee, getEmployee }) => {
           <p className={styles.employeeName} onClick={() => setModal(true)}>
             {employee.displayName}
           </p>
+          <p>{employee.hireDate}</p>
         </div>
         <div className={styles.jobDetails}>
           <p>{employee.department}</p>

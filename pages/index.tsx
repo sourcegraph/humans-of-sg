@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar/Navbar";
 import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 import Image from "next/image";
 import logo from "../assets/sg_logo.png";
-import { useEffect } from "react";
 
 const Home = ({ customReport }) => {
   console.log(customReport);
@@ -13,7 +12,13 @@ const Home = ({ customReport }) => {
     return <h4>Theres nothing to show right now</h4>;
   }
 
-  let customReportData = customReport.employees.map((employee, index) => {
+  const employeesByHireDate = customReport.employees.sort(function (
+    employee1,
+    employee2,
+  ) {
+    return new Date(employee1.hireDate) - new Date(employee2.hireDate);
+  });
+  const customReportData = employeesByHireDate.map((employee, index) => {
     return <EmployeeCard employee={employee} />;
   });
 
@@ -68,7 +73,7 @@ export async function getServerSideProps() {
 
   const customReport = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
-    options
+    options,
   )
     .then((response) => response.json())
     .catch((err) => console.error(err));

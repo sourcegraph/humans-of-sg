@@ -9,9 +9,9 @@ const Modal = ({ setModal, employee }) => {
   return (
     <div className={styles.modalBackground} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.modalHeader}>
+        {/* <div className={styles.modalHeader}>
           <h4 className={styles.modalTitle}>{employee.displayName}</h4>
-        </div>
+        </div> */}
         <div className={styles.modalBody}>
           <div className={styles.modalLeftPanel}>
             <div className="employeePhoto">
@@ -36,6 +36,10 @@ const Modal = ({ setModal, employee }) => {
                 {employee.jobTitle}
               </span>
               <br></br>
+              <span className={styles.employeeInfoText}>
+                {employee.hireDate}
+              </span>
+              <br></br>
             </div>
             <div className={styles.employeeBio}>
               <p className={styles.employeeBioText}>
@@ -48,7 +52,7 @@ const Modal = ({ setModal, employee }) => {
           </div>
         </div>
         <div className={styles.modalFooter}>
-          <button className={styles.button} onClick={() => onClose()}>
+          <button className={styles.button} onClick={onClose} type="button">
             close
           </button>
         </div>

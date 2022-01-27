@@ -19,6 +19,7 @@ const EmployeeCard = ({ employee, getEmployee }) => {
         </div>
         <div className={styles.jobDetails}>
           <p>{employee.department}</p>
+          <p>{employee.division}</p>
           <p>{employee.jobTitle}</p>
         </div>
       </div>

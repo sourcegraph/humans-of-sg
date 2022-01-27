@@ -4,22 +4,28 @@ import Navbar from "../components/Navbar/Navbar";
 import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 import Image from "next/image";
 import logo from "../assets/sg_logo.png";
+import AllEmployees from "../components/AllEmployees/AllEmployees";
 
-const Home = ({ customReport }) => {
-  console.log(customReport);
-
+const Home = ({ customReport, allEmployees }) => {
   if (!customReport) {
     return <h4>Theres nothing to show right now</h4>;
   }
 
-  const employeesByHireDate = customReport.employees.sort(function (
+  const employeesByHireDate = customReport.sort(function (
     employee1,
     employee2,
   ) {
-    return new Date(employee1.hireDate) - new Date(employee2.hireDate);
+    return new Date(employee2.hireDate) - new Date(employee1.hireDate);
   });
+
   const customReportData = employeesByHireDate.map((employee, index) => {
-    return <EmployeeCard employee={employee} />;
+    // I do not want to see future hires, but is this correct?
+    if (
+      employee.status === "Active" &&
+      new Date(employee.hireDate) < new Date()
+    ) {
+      return <EmployeeCard key={index} employee={employee} />;
+    }
   });
 
   return (
@@ -44,13 +50,51 @@ const Home = ({ customReport }) => {
           Familiarize yourself with our teammates and organization.
         </p>
       </div>
-      <div className={styles.allEmployees}>{customReportData}</div>
+      <h6>Recent Hires</h6>
+      <div className={styles.recentHiresBanner}>{customReportData}</div>
+      <h6>All Employees</h6>
+
+      <AllEmployees allEmployees={allEmployees} />
     </>
   );
 };
 
 export async function getServerSideProps() {
+  let date: Date | string = new Date();
+  date.setDate(date.getDate() - 14);
+
+  //manipulating ISO string as bamboo API doesnt accept milliseconds
+  let fixedDate = date.toISOString().split(".")[0] + "Z";
+
   const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${process.env.API_KEY}`,
+    },
+    body: JSON.stringify({
+      filters: {
+        lastChanged: {
+          includeNull: "no",
+          value: fixedDate,
+        },
+      },
+      fields: [
+        "displayName",
+        "customGitHub",
+        "jobTitle",
+        "workEmail",
+        "department",
+        // For some reason photoUrl only works if photoUploaded is also requested at the same time
+        "photoUploaded",
+        "photoUrl",
+        "hireDate",
+        "status",
+      ],
+    }),
+  };
+
+  const options2 = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,6 +111,8 @@ export async function getServerSideProps() {
         "photoUploaded",
         "photoUrl",
         "hireDate",
+        "status",
+        "division",
       ],
     }),
   };
@@ -76,11 +122,22 @@ export async function getServerSideProps() {
     options,
   )
     .then((response) => response.json())
+    .then((data) =>
+      data.employees.filter((employee) => new Date(employee.hireDate) > date),
+    )
+    .catch((err) => console.error(err));
+
+  const allEmployees = await fetch(
+    "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
+    options2,
+  )
+    .then((response) => response.json())
     .catch((err) => console.error(err));
 
   return {
     props: {
       customReport,
+      allEmployees,
     },
   };
 }

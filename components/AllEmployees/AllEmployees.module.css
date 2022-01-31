@@ -3,10 +3,15 @@
 }
 
 .tabContent {
-  display: flex;
+  /* display: flex; */
 }
 
 .tabPane {
-  align-items: flex-end;
-  display: inline;
+  /* align-items: flex-end; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.test {
+  text-align: right;
 }

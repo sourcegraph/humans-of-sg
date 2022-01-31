@@ -5,6 +5,8 @@ import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 import Image from "next/image";
 import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
+import CarouselSlide from "../components/CarouselSlide/CarouselSlide";
+import Test from "../components/Test/Test";
 
 const Home = ({ customReport, allEmployees }) => {
   if (!customReport) {
@@ -18,15 +20,11 @@ const Home = ({ customReport, allEmployees }) => {
     return new Date(employee2.hireDate) - new Date(employee1.hireDate);
   });
 
-  const customReportData = employeesByHireDate.map((employee, index) => {
-    // I do not want to see future hires, but is this correct?
-    if (
-      employee.status === "Active" &&
-      new Date(employee.hireDate) < new Date()
-    ) {
-      return <EmployeeCard key={index} employee={employee} />;
-    }
-  });
+  const activeNewHires = employeesByHireDate.filter(
+    (employee) =>
+      employee.status !== "Inactive" &&
+      new Date(employee.hireDate) < new Date(),
+  );
 
   return (
     <>
@@ -50,10 +48,9 @@ const Home = ({ customReport, allEmployees }) => {
           Familiarize yourself with our teammates and organization.
         </p>
       </div>
-      <h6>Recent Hires</h6>
-      <div className={styles.recentHiresBanner}>{customReportData}</div>
-      <h6>All Employees</h6>
 
+      {/* <CarouselSlide activeNewHires={activeNewHires} /> */}
+      <Test activeNewHires={activeNewHires} />
       <AllEmployees allEmployees={allEmployees} />
     </>
   );
@@ -90,6 +87,7 @@ export async function getServerSideProps() {
         "photoUrl",
         "hireDate",
         "status",
+        "customPronouns",
       ],
     }),
   };
@@ -113,6 +111,7 @@ export async function getServerSideProps() {
         "hireDate",
         "status",
         "division",
+        "pronouns",
       ],
     }),
   };

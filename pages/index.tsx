@@ -50,7 +50,7 @@ const Home = ({ customReport, allEmployees }) => {
       </div>
 
       {/* <CarouselSlide activeNewHires={activeNewHires} /> */}
-      <Test activeNewHires={activeNewHires} />
+      <Test activeNewHires={activeNewHires} active={0} />
       <AllEmployees allEmployees={allEmployees} />
     </>
   );

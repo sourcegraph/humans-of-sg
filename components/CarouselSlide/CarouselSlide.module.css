@@ -1,15 +1,15 @@
 .carouselContainer {
   display: flex;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .newHireCarousel {
   display: flex;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .newHirePage {
   display: flex;
   justify-content: space-between;
-  background-color: green;
+  /* background-color: green; */
 }

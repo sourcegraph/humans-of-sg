@@ -1,14 +1,12 @@
-// import Item
 import React from "react";
 
 import Test2 from "./Test2";
 import styles from "../Test/Test.module.css";
-import ReactCSSTransitionGroup from "react-transition-group";
+import { TransitionGroup } from "react-transition-group";
 
 const Test = ({ activeNewHires }) => {
   // let ReactCSSTransitionGroup = React.CSSTransitionGroup;
 
-  const [items, setItems] = React.useState(activeNewHires);
   const [active, setActive] = React.useState(0);
   const [direction, setDirection] = React.useState("");
 
@@ -28,7 +26,7 @@ const Test = ({ activeNewHires }) => {
   const generateItems = () => {
     var generatedItems = [];
     var level;
-    console.log(active);
+    console.log(activeNewHires);
     for (var i = active - 2; i < active + 3; i++) {
       var index = i;
       if (i < 0) {
@@ -38,7 +36,7 @@ const Test = ({ activeNewHires }) => {
       }
       level = active - i;
       generatedItems.push(
-        <Test2 key={index} employee={generatedItems[index]} level={level} />,
+        <Test2 key={index} employee={activeNewHires[index]} level={level} />,
       );
     }
     return generatedItems;
@@ -49,9 +47,9 @@ const Test = ({ activeNewHires }) => {
       <div className={styles.arrowleft} onClick={leftClick}>
         <i className={styles.fileft}></i>
       </div>
-      <ReactCSSTransitionGroup transitionName={direction}>
+      <TransitionGroup transitionName={direction}>
         {generateItems()}
-      </ReactCSSTransitionGroup>
+      </TransitionGroup>
       <div onClick={rightClick}>
         <i></i>
       </div>

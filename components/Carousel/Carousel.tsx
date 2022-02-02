@@ -37,7 +37,6 @@ const Carousel = ({ activeNewHires }) => {
           employee={activeNewHires[index]}
           level={level}
         />,
-        // <span className={styles.test}>test</span>,
       );
     }
 
@@ -45,21 +44,21 @@ const Carousel = ({ activeNewHires }) => {
   };
 
   return (
-    <div className={styles.noselect + " " + styles.carousel}>
+    <div className={styles.carouselContainer}>
       <div className={styles.arrow} onClick={leftClick}>
         &larr;
       </div>
 
-      <div className={styles.test}>
-        <TransitionGroup transitionName={direction}>
+      <div className={styles.carousel}>
+        <TransitionGroup
+          className={styles.carouselItems}
+          transitionName={direction}
+        >
           {generateItems()}
         </TransitionGroup>
       </div>
 
-      <div
-        className={styles.arrow + " " + styles.arrowRight}
-        onClick={rightClick}
-      >
+      <div className={styles.arrow} onClick={rightClick}>
         &rarr;
       </div>
     </div>

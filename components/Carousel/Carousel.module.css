@@ -1,17 +1,15 @@
 .carousel {
   /* position: absolute; */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  width: 810px;
+  display: inline-flex;
+  /* height: 200px;
+  width: 810px; */
   margin: auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
 }
+
 .arrow {
   display: flex;
   /* position: absolute;
@@ -36,6 +34,7 @@
 
 .test {
   display: flex;
+  display: inline;
 }
 
 .left-enter {

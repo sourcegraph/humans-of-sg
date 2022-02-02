@@ -7,17 +7,17 @@ const Carousel = ({ activeNewHires }) => {
   const [active, setActive] = React.useState(0);
   const [direction, setDirection] = React.useState("");
 
-  const rightClick = React.useCallback(() => {
-    let newActive = active;
-    setActive((newActive + 1) % activeNewHires.length);
-    setDirection("right");
-  }, []);
-
   const leftClick = React.useCallback(() => {
     let newActive = active;
     newActive--;
     setActive(newActive < 0 ? activeNewHires.length - 1 : newActive);
     setDirection("left");
+  }, []);
+
+  const rightClick = React.useCallback(() => {
+    let newActive = active;
+    setActive((newActive + 1) % activeNewHires.length);
+    setDirection("right");
   }, []);
 
   const generateItems = () => {
@@ -37,6 +37,7 @@ const Carousel = ({ activeNewHires }) => {
           employee={activeNewHires[index]}
           level={level}
         />,
+        // <span className={styles.test}>test</span>,
       );
     }
 

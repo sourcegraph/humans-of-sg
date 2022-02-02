@@ -1,3 +1,8 @@
+.test {
+  display: flex;
+  display: inline;
+}
+
 .item {
   display: flex;
   /* flex-direction: row; */

@@ -14,7 +14,11 @@ const CarouselSlide = ({ activeNewHires }) => {
 
   return (
     <div className={styles.carouselContainer}>
-      <Carousel className={styles.newHireCarousel} variant="dark">
+      <Carousel
+        className={styles.newHireCarousel}
+        interval={null}
+        variant="dark"
+      >
         {carouselArray.map((_value, index) => (
           <Carousel.Item key={`carousel-${index}`}>
             <div className={styles.newHirePage}>

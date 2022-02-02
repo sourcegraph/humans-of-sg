@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Lobster");
-/* body {
-  background-color: #89fad0;
-  font-family: "Lobster";
-} */
-#carousel {
-  position: absolute;
+.carousel {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 200px;
   width: 810px;
   margin: auto;
@@ -14,7 +13,8 @@
   bottom: 0;
 }
 .arrow {
-  position: absolute;
+  display: flex;
+  /* position: absolute;
   width: 30px;
   height: 30px;
   background-color: white;
@@ -26,58 +26,18 @@
   color: #228291;
   line-height: 30px;
   margin-top: 85px;
-  z-index: 1000;
+  z-index: 1000; */
 }
-.arrowright {
-  left: 780px;
+
+.arrowRight {
+  display: flex;
+  /* left: 780px; */
 }
-.item {
-  text-align: center;
-  color: white;
-  font-size: 40px;
-  position: absolute;
-  transition: height 1s, width 1s, left 1s, margin-top 1s, line-height 1s,
-    background-color 1s;
+
+.test {
+  display: flex;
 }
-.level-2 {
-  height: 150px;
-  width: 110px;
-  line-height: 150px;
-  background-color: #228291;
-  left: 650px;
-  margin-top: 25px;
-}
-.level-1 {
-  height: 180px;
-  width: 130px;
-  line-height: 180px;
-  background-color: #6796e5;
-  left: 500px;
-  margin-top: 10px;
-}
-.level0 {
-  height: 200px;
-  width: 150px;
-  line-height: 200px;
-  background-color: #4ec9e1;
-  left: 330px;
-}
-.level1 {
-  height: 180px;
-  width: 130px;
-  line-height: 180px;
-  background-color: #6796e5;
-  margin-top: 10px;
-  left: 180px;
-}
-.level2 {
-  height: 150px;
-  width: 110px;
-  line-height: 150px;
-  background-color: #228291;
-  margin-top: 25px;
-  left: 50px;
-}
+
 .left-enter {
   opacity: 0;
   left: -60px;
@@ -150,10 +110,10 @@
   transition: left 1s, opacity 1s, height 1s, width 1s, margin-top 1s,
     line-height 1s;
 }
-.noselect {
+/* .noselect {
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+} */

@@ -1,12 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar/Navbar";
-import EmployeeCard from "../components/EmployeeCard/EmployeeCard";
 import Image from "next/image";
 import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
-import CarouselSlide from "../components/CarouselSlide/CarouselSlide";
-import Test from "../components/Test/Test";
+import Carousel from "../components/Carousel/Carousel";
 
 const Home = ({ customReport, allEmployees }) => {
   if (!customReport) {
@@ -49,9 +47,12 @@ const Home = ({ customReport, allEmployees }) => {
         </p>
       </div>
 
-      {/* <CarouselSlide activeNewHires={activeNewHires} /> */}
-      <Test activeNewHires={activeNewHires} active={0} />
-      <AllEmployees allEmployees={allEmployees} />
+      <div>
+        <Carousel activeNewHires={activeNewHires} />
+      </div>
+      <div>
+        <AllEmployees allEmployees={allEmployees} />
+      </div>
     </>
   );
 };

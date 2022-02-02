@@ -6,12 +6,15 @@ import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
 import Carousel from "../components/Carousel/Carousel";
 
-const Home = ({ customReport, allEmployees }) => {
-  if (!customReport) {
+const Home = ({ recentChangeEmployees, allEmployees }) => {
+  console.log(recentChangeEmployees);
+  console.log(allEmployees);
+
+  if (!recentChangeEmployees) {
     return <h4>Theres nothing to show right now</h4>;
   }
 
-  const employeesByHireDate = customReport.sort(function (
+  const employeesByHireDate = recentChangeEmployees.sort(function (
     employee1,
     employee2,
   ) {
@@ -64,7 +67,7 @@ export async function getServerSideProps() {
   //manipulating ISO string as bamboo API doesnt accept milliseconds
   let fixedDate = date.toISOString().split(".")[0] + "Z";
 
-  const options = {
+  const newHireOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +81,8 @@ export async function getServerSideProps() {
         },
       },
       fields: [
-        "displayName",
+        "firstName",
+        "lastName",
         "customGitHub",
         "jobTitle",
         "workEmail",
@@ -89,11 +93,12 @@ export async function getServerSideProps() {
         "hireDate",
         "status",
         "customPronouns",
+        "preferredName",
       ],
     }),
   };
 
-  const options2 = {
+  const allEmployeeOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -101,7 +106,8 @@ export async function getServerSideProps() {
     },
     body: JSON.stringify({
       fields: [
-        "displayName",
+        "firstName",
+        "lastName",
         "customGitHub",
         "jobTitle",
         "workEmail",
@@ -113,13 +119,15 @@ export async function getServerSideProps() {
         "status",
         "division",
         "pronouns",
+        "preferredName",
+        // "customPreferredSurname",
       ],
     }),
   };
 
-  const customReport = await fetch(
+  const recentChangeEmployees = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
-    options,
+    newHireOptions,
   )
     .then((response) => response.json())
     .then((data) =>
@@ -129,14 +137,14 @@ export async function getServerSideProps() {
 
   const allEmployees = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
-    options2,
+    allEmployeeOptions,
   )
     .then((response) => response.json())
     .catch((err) => console.error(err));
 
   return {
     props: {
-      customReport,
+      recentChangeEmployees,
       allEmployees,
     },
   };

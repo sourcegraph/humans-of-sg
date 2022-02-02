@@ -2,8 +2,10 @@ import styles from "./EmployeeCard.module.css";
 import React from "react";
 import Modal from "../Modal/Modal";
 
-const EmployeeCard = ({ key, employee }) => {
+const EmployeeCard = ({ employee }) => {
   const [modal, setModal] = React.useState(false);
+
+  // preferred name ?
 
   return (
     <div className={styles.card}>
@@ -12,9 +14,16 @@ const EmployeeCard = ({ key, employee }) => {
       </div>
       <div className={styles.employeeInfo}>
         <div className={styles.name}>
-          <p className={styles.employeeName} onClick={() => setModal(true)}>
-            {employee.displayName}
-          </p>
+          {employee.preferredName ? (
+            <p className={styles.employeeName} onClick={() => setModal(true)}>
+              {employee.preferredName + " " + employee.lastName}
+            </p>
+          ) : (
+            <p className={styles.employeeName} onClick={() => setModal(true)}>
+              {employee.firstName + " " + employee.lastName}
+            </p>
+          )}
+
           <p>{employee.hireDate}</p>
         </div>
         <div className={styles.jobDetails}>

@@ -1,0 +1,18 @@
+.carouselContainer {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.newHireCarousel {
+  display: flex;
+  justify-content: center;
+  /* background-color: yellow; */
+}
+
+.newHirePage {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: green; */
+}

@@ -9,9 +9,6 @@ const Modal = ({ setModal, employee }) => {
   return (
     <div className={styles.modalBackground} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        {/* <div className={styles.modalHeader}>
-          <h4 className={styles.modalTitle}>{employee.displayName}</h4>
-        </div> */}
         <div className={styles.modalBody}>
           <div className={styles.modalLeftPanel}>
             <div className="employeePhoto">
@@ -27,6 +24,12 @@ const Modal = ({ setModal, employee }) => {
               <span className={styles.employeeInfoText}>
                 {employee.displayName}
               </span>
+
+              <br></br>
+              <span className={styles.employeeInfoText}>
+                {employee.customPronouns}
+              </span>
+
               <br></br>
               <span className={styles.employeeInfoText}>
                 {employee.department}

@@ -9,9 +9,15 @@ import styles from "./AllEmployees.module.css";
 const AllEmployees = ({ allEmployees }) => {
   const divisions = new Set();
 
+  let count = {};
   allEmployees.employees.forEach((employee) => {
     const division = employee.division?.split("-")[0];
     divisions.add(division);
+    if (count[division] === undefined) {
+      count[division] = 0;
+    } else {
+      ++count[division];
+    }
   });
 
   return (
@@ -28,7 +34,9 @@ const AllEmployees = ({ allEmployees }) => {
                         key={`event-${index}`}
                         eventKey={`event-${index}`}
                       >
-                        {division}
+                        <span className={styles.test}>
+                          {division + " " + count[division]}
+                        </span>
                       </Nav.Link>
                     </Nav.Item>
                   </>
@@ -37,7 +45,7 @@ const AllEmployees = ({ allEmployees }) => {
             </Col>
 
             <Col sm={9}>
-              <Tab.Content className={styles.tabContent}>
+              <Tab.Content>
                 {[...divisions].map((division, index) => (
                   <>
                     <Tab.Pane
@@ -45,16 +53,18 @@ const AllEmployees = ({ allEmployees }) => {
                       eventKey={`event-${index}`}
                       className={styles.tabPane}
                     >
-                      {allEmployees.employees
-                        .filter(
-                          (employee) =>
-                            employee.division?.split("-")[0] ===
-                              division?.split("-")[0] &&
-                            employee.status === "Active",
-                        )
-                        .map((employee) => (
-                          <EmployeeCard employee={employee} />
-                        ))}
+                      <div className={styles.tabPane}>
+                        {allEmployees.employees
+                          .filter(
+                            (employee) =>
+                              employee.division?.split("-")[0] ===
+                                division?.split("-")[0] &&
+                              employee.status != "Inactive",
+                          )
+                          .map((employee) => (
+                            <EmployeeCard employee={employee} />
+                          ))}
+                      </div>
                     </Tab.Pane>
                   </>
                 ))}

@@ -6,7 +6,7 @@ const CarouselItem = ({ key, level, employee }) => {
     return (
       <div className={styles.item + " " + styles["level" + level]}>
         {/* <EmployeeCard key={key} employee={employee} /> */}
-        <div className={styles.test}>{employee.displayName}</div>
+        <div className={styles.test}>{employee.firstName}</div>
       </div>
     );
   }

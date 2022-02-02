@@ -29,7 +29,7 @@ const AllEmployees = ({ allEmployees }) => {
               <Nav variant="pills" className="flex-column">
                 {[...divisions].map((division, index) => (
                   <>
-                    <Nav.Item key={`nav-${index}`}>
+                    <Nav.Item key={`nav-${division}`}>
                       <Nav.Link
                         key={`event-${index}`}
                         eventKey={`event-${index}`}

@@ -8,9 +8,6 @@ import Carousel from "../components/Carousel/Carousel";
 import NewCarousel from "../components/NewCarousel/NewCarousel";
 
 const Home = ({ recentChangeEmployees, allEmployees }) => {
-  console.log(recentChangeEmployees);
-  console.log(allEmployees);
-
   if (!recentChangeEmployees) {
     return <h4>Theres nothing to show right now</h4>;
   }

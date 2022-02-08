@@ -4,8 +4,6 @@ import styles from "../Carousel/Carousel.module.css";
 import { TransitionGroup } from "react-transition-group";
 
 const Carousel = ({ activeNewHires }) => {
-  console.log(activeNewHires);
-
   const [active, setActive] = React.useState(0);
   const [direction, setDirection] = React.useState("");
 
@@ -45,8 +43,6 @@ const Carousel = ({ activeNewHires }) => {
       );
     }
 
-    console.log(generatedItems, "test");
-
     return generatedItems;
   };
 
@@ -59,7 +55,7 @@ const Carousel = ({ activeNewHires }) => {
       <div className={styles.carousel}>
         <TransitionGroup
           className={styles.carouselItems}
-          transitionName={direction}
+          transitionname={direction}
         >
           {generateItems()}
         </TransitionGroup>

@@ -22,7 +22,7 @@ const NewCarousel = ({ activeNewHires }) => {
   // We want up to 5 items visible in the carousel, with the first employee in the center
   // e.g. if there are 10 employees, the employee we show leftmost in the carousel is the 9th one
   const [leftMostIndex, setLeftMostIndex] = React.useState(
-    activeNewHires.length - 1,
+    activeNewHires.length - 2,
   );
   // e.g. if there are 10 employees, the employee we show rightmost in the carousel is the 3rd one
   const [rightMostIndex, setRightMostIndex] = React.useState(2);
@@ -32,7 +32,7 @@ const NewCarousel = ({ activeNewHires }) => {
     leftMostIndex > rightMostIndex
       ? // e.g. for 10 employees with leftmost at 9 and rightmost at 2, we want to show 9, 10, 0, 1, 2
         activeNewHires
-          .slice(leftMostIndex, activeNewHires.length)
+          .slice(leftMostIndex, activeNewHires.length - 1)
           .concat(activeNewHires.slice(0, rightMostIndex))
       : // e.g. for 10 employees with leftmost at 2 and rightmost at 6, we want to show 2, 3, 4, 5, 6
         activeNewHires.slice(leftMostIndex, rightMostIndex);
@@ -62,7 +62,7 @@ const NewCarousel = ({ activeNewHires }) => {
       <div className={styles.carousel}>
         <TransitionGroup
           className={styles.carouselItems}
-          transitionName={direction}
+          transitionname={direction}
         >
           {carouselItems}
         </TransitionGroup>

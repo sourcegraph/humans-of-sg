@@ -7,8 +7,6 @@ import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./AllEmployees.module.css";
 
 const AllEmployees = ({ allEmployees }) => {
-  console.log(allEmployees);
-
   const departments = new Set();
 
   let count = {};

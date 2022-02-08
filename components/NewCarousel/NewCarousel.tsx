@@ -16,6 +16,8 @@ import styles from "../Carousel/Carousel.module.css";
 // 0, 1, 2, 3, 4
 
 const NewCarousel = ({ activeNewHires }) => {
+  console.log(activeNewHires);
+
   // TODO: If activeNewHires.length < 5, show them in the carousel but with the buttons disabled.
 
   // activeNewHires is array of employees
@@ -32,8 +34,8 @@ const NewCarousel = ({ activeNewHires }) => {
     leftMostIndex > rightMostIndex
       ? // e.g. for 10 employees with leftmost at 9 and rightmost at 2, we want to show 9, 10, 0, 1, 2
         activeNewHires
-          .slice(leftMostIndex, activeNewHires.length - 1)
-          .concat(activeNewHires.slice(0, rightMostIndex))
+          .slice(leftMostIndex, activeNewHires.length)
+          .concat(activeNewHires.slice(0, rightMostIndex + 1))
       : // e.g. for 10 employees with leftmost at 2 and rightmost at 6, we want to show 2, 3, 4, 5, 6
         activeNewHires.slice(leftMostIndex, rightMostIndex);
 

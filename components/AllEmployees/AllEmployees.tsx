@@ -7,16 +7,18 @@ import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./AllEmployees.module.css";
 
 const AllEmployees = ({ allEmployees }) => {
-  const divisions = new Set();
+  console.log(allEmployees);
+
+  const departments = new Set();
 
   let count = {};
-  allEmployees.employees.forEach((employee) => {
-    const division = employee.division?.split("-")[0];
-    divisions.add(division);
-    if (count[division] === undefined) {
-      count[division] = 0;
+  allEmployees.forEach((employee) => {
+    const department = employee.department;
+    departments.add(department);
+    if (count[department] === undefined) {
+      count[department] = 1;
     } else {
-      ++count[division];
+      ++count[department];
     }
   });
 
@@ -27,26 +29,35 @@ const AllEmployees = ({ allEmployees }) => {
           <Row>
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
-                {[...divisions].map((division, index) => (
-                  <>
-                    <Nav.Item key={`nav-${division}`}>
+                {[...departments].map((department, index) => (
+                  <Nav.Item key={`nav-${department}`}>
+                    {/* employees whom have a future start date do not have a department information reported */}
+                    {department ? (
                       <Nav.Link
+                        className={styles.navLink}
                         key={`event-${index}`}
                         eventKey={`event-${index}`}
                       >
-                        <span className={styles.test}>
-                          {division + " " + count[division]}
-                        </span>
+                        {
+                          <span className={styles.departmentCount}>
+                            {department}
+                          </span>
+                        }
+                        {
+                          <span className={styles.departmentCount}>
+                            {count[department]}
+                          </span>
+                        }
                       </Nav.Link>
-                    </Nav.Item>
-                  </>
+                    ) : null}
+                  </Nav.Item>
                 ))}
               </Nav>
             </Col>
 
             <Col sm={9}>
               <Tab.Content>
-                {[...divisions].map((division, index) => (
+                {[...departments].map((department, index) => (
                   <>
                     <Tab.Pane
                       key={`pane-${index}`}
@@ -54,11 +65,11 @@ const AllEmployees = ({ allEmployees }) => {
                       className={styles.tabPane}
                     >
                       <div className={styles.tabPane}>
-                        {allEmployees.employees
+                        {allEmployees
                           .filter(
                             (employee) =>
-                              employee.division?.split("-")[0] ===
-                                division?.split("-")[0] &&
+                              employee.department?.split("-")[0] ===
+                                department?.split("-")[0] &&
                               employee.status != "Inactive",
                           )
                           .map((employee) => (

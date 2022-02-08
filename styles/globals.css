@@ -18,3 +18,10 @@ a {
 li {
   list-style-type: none;
 }
+
+.nav-link[data-toggle].collapsed:after {
+  content: " ▾";
+}
+.nav-link[data-toggle]:not(.collapsed):after {
+  content: " ▴";
+}

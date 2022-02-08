@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
 import Carousel from "../components/Carousel/Carousel";
+import NewCarousel from "../components/NewCarousel/NewCarousel";
 
 const Home = ({ recentChangeEmployees, allEmployees }) => {
   console.log(recentChangeEmployees);
@@ -23,8 +24,7 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
 
   const activeNewHires = employeesByHireDate.filter(
     (employee) =>
-      employee.status !== "Inactive" &&
-      new Date(employee.hireDate) < new Date(),
+      employee.status != "Inactive" && new Date(employee.hireDate) < new Date(),
   );
 
   return (
@@ -56,6 +56,8 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
       <div>
         <AllEmployees allEmployees={allEmployees} />
       </div>
+
+      <NewCarousel activeNewHires={activeNewHires} />
     </>
   );
 };
@@ -140,6 +142,9 @@ export async function getServerSideProps() {
     allEmployeeOptions,
   )
     .then((response) => response.json())
+    .then((data) =>
+      data.employees.filter((employee) => employee.status != "Inactive"),
+    )
     .catch((err) => console.error(err));
 
   return {

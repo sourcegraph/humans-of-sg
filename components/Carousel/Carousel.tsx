@@ -4,6 +4,8 @@ import styles from "../Carousel/Carousel.module.css";
 import { TransitionGroup } from "react-transition-group";
 
 const Carousel = ({ activeNewHires }) => {
+  console.log(activeNewHires);
+
   const [active, setActive] = React.useState(0);
   const [direction, setDirection] = React.useState("");
 
@@ -16,6 +18,7 @@ const Carousel = ({ activeNewHires }) => {
 
   const rightClick = React.useCallback(() => {
     let newActive = active;
+    //TODO: refactor?
     setActive((newActive + 1) % activeNewHires.length);
     setDirection("right");
   }, []);
@@ -23,6 +26,7 @@ const Carousel = ({ activeNewHires }) => {
   const generateItems = () => {
     let generatedItems = [];
     let level;
+
     for (let i = active - 2; i < active + 3; i++) {
       let index = i;
       if (i < 0) {
@@ -31,6 +35,7 @@ const Carousel = ({ activeNewHires }) => {
         index = i % activeNewHires.length;
       }
       level = active - i;
+
       generatedItems.push(
         <CarouselItem
           key={index}
@@ -39,6 +44,8 @@ const Carousel = ({ activeNewHires }) => {
         />,
       );
     }
+
+    console.log(generatedItems, "test");
 
     return generatedItems;
   };

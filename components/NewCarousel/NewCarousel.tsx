@@ -17,7 +17,6 @@ import styles from "../Carousel/Carousel.module.css";
 
 const NewCarousel = ({ activeNewHires }) => {
   console.log(activeNewHires);
-
   // TODO: If activeNewHires.length < 5, show them in the carousel but with the buttons disabled.
 
   // activeNewHires is array of employees
@@ -37,17 +36,24 @@ const NewCarousel = ({ activeNewHires }) => {
           .slice(leftMostIndex, activeNewHires.length)
           .concat(activeNewHires.slice(0, rightMostIndex + 1))
       : // e.g. for 10 employees with leftmost at 2 and rightmost at 6, we want to show 2, 3, 4, 5, 6
-        activeNewHires.slice(leftMostIndex, rightMostIndex);
+        activeNewHires.slice(leftMostIndex, rightMostIndex + 1);
 
+  console.log(visibleNewHires);
+
+  //useCallback only about defining the function....
   const leftClick = React.useCallback(() => {
     setLeftMostIndex(
       leftMostIndex === 0 ? activeNewHires.length - 1 : leftMostIndex - 1,
+    );
+    setRightMostIndex(
+      rightMostIndex === 0 ? activeNewHires.length - 1 : rightMostIndex - 1,
     );
     setDirection("left");
   }, [activeNewHires.length, leftMostIndex]);
 
   const rightClick = React.useCallback(() => {
-    setRightMostIndex((rightMostIndex + 1) % activeNewHires.length);
+    // setRightMostIndex((rightMostIndex + 1) % activeNewHires.length);
+    setRightMostIndex(rightMostIndex + 1);
     setDirection("right");
   }, [activeNewHires.length, rightMostIndex]);
 

@@ -5,8 +5,6 @@ import Modal from "../Modal/Modal";
 const EmployeeCard = ({ employee }) => {
   const [modal, setModal] = React.useState(false);
 
-  // preferred name ?
-
   return (
     <div className={styles.card}>
       <div className={styles.photo}>

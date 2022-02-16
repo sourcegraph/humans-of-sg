@@ -5,7 +5,6 @@ import Image from "next/image";
 import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
 import Carousel from "../components/Carousel/Carousel";
-import NewCarousel from "../components/NewCarousel/NewCarousel";
 
 const Home = ({ recentChangeEmployees, allEmployees }) => {
   if (!recentChangeEmployees) {
@@ -53,8 +52,6 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
       <div>
         <AllEmployees allEmployees={allEmployees} />
       </div>
-
-      <NewCarousel activeNewHires={activeNewHires} />
     </>
   );
 };

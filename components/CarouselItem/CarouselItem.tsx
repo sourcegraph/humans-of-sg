@@ -1,5 +1,5 @@
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
-import styles from "../Carousel/CarouselItem.module.css";
+import styles from "../CarouselItem/CarouselItem.module.css";
 
 const CarouselItem = ({ level, employee }) => {
   if (employee !== undefined) {

@@ -1,50 +1,72 @@
 import React from "react";
-import CarouselItem from "./CarouselItem";
-import styles from "../Carousel/Carousel.module.css";
+import CarouselItem from "../CarouselItem/CarouselItem";
 import { TransitionGroup } from "react-transition-group";
+import styles from "../Carousel/Carousel.module.css";
+
+// 10 Employees
+// The first employee is always the middle of the carousel to start
+// 9, 10, 0, 1, 2
+// Move left:
+// 8, 9, 10, 0, 1
+// Move right:
+// 9, 10, 0, 1, 2
+// Move right:
+// 10, 0, 1, 2, 3
+// Move right:
+// 0, 1, 2, 3, 4
 
 const Carousel = ({ activeNewHires }) => {
-  const [active, setActive] = React.useState(0);
+  console.log(activeNewHires);
+
+  // console.log(activeNewHires);
+  // TODO: If activeNewHires.length < 5, show them in the carousel but with the buttons disabled.
+
+  // activeNewHires is array of employees
+  // We want up to 5 items visible in the carousel, with the first employee in the center
+  // e.g. if there are 10 employees, the employee we show leftmost in the carousel is the 9th one
+  const [leftMostIndex, setLeftMostIndex] = React.useState(
+    activeNewHires.length - 2,
+  );
+  // e.g. if there are 10 employees, the employee we show rightmost in the carousel is the 3rd one
+  const [rightMostIndex, setRightMostIndex] = React.useState(2);
   const [direction, setDirection] = React.useState("");
 
+  const visibleNewHires =
+    leftMostIndex > rightMostIndex
+      ? // e.g. for 10 employees with leftmost at 9 and rightmost at 2, we want to show 9, 10, 0, 1, 2
+        activeNewHires
+          .slice(leftMostIndex, activeNewHires.length)
+          .concat(activeNewHires.slice(0, rightMostIndex + 1))
+      : // e.g. for 10 employees with leftmost at 2 and rightmost at 6, we want to show 2, 3, 4, 5, 6
+        activeNewHires.slice(leftMostIndex, rightMostIndex);
+
+  // console.log(visibleNewHires);
+
+  //useCallback only about defining the function....
   const leftClick = React.useCallback(() => {
-    let newActive = active;
-    newActive--;
-    setActive(newActive < 0 ? activeNewHires.length - 1 : newActive);
+    setLeftMostIndex(
+      leftMostIndex === 0 ? activeNewHires.length - 1 : leftMostIndex - 1,
+    );
+    setRightMostIndex(
+      rightMostIndex === 0 ? activeNewHires.length - 1 : rightMostIndex - 1,
+    );
     setDirection("left");
-  }, []);
+  }, [activeNewHires.length, leftMostIndex]);
 
   const rightClick = React.useCallback(() => {
-    let newActive = active;
-    //TODO: refactor?
-    setActive((newActive + 1) % activeNewHires.length);
+    setLeftMostIndex(
+      leftMostIndex === 0 ? activeNewHires.length - 1 : leftMostIndex + 1,
+    );
+
+    // setRightMostIndex((rightMostIndex + 1) % activeNewHires.length);
+    setRightMostIndex(rightMostIndex + 1);
+
     setDirection("right");
-  }, []);
+  }, [activeNewHires.length, rightMostIndex]);
 
-  const generateItems = () => {
-    let generatedItems = [];
-    let level;
-
-    for (let i = active - 2; i < active + 3; i++) {
-      let index = i;
-      if (i < 0) {
-        index = activeNewHires.length + i;
-      } else if (i >= activeNewHires.length) {
-        index = i % activeNewHires.length;
-      }
-      level = active - i;
-
-      generatedItems.push(
-        <CarouselItem
-          key={index}
-          employee={activeNewHires[index]}
-          level={level}
-        />,
-      );
-    }
-
-    return generatedItems;
-  };
+  const carouselItems = visibleNewHires.map((newHire, index) => {
+    return <CarouselItem key={index} employee={newHire} level={index - 2} />;
+  });
 
   return (
     <div className={styles.carouselContainer}>
@@ -57,7 +79,7 @@ const Carousel = ({ activeNewHires }) => {
           className={styles.carouselItems}
           transitionname={direction}
         >
-          {generateItems()}
+          {carouselItems}
         </TransitionGroup>
       </div>
 

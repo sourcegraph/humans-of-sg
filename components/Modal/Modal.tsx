@@ -22,7 +22,7 @@ const Modal = ({ setModal, employee }) => {
           <div className={styles.modalRightPanel}>
             <div className={styles.employeeInfo}>
               <span className={styles.employeeInfoText}>
-                {employee.displayName}
+                {employee.preferredName}
               </span>
 
               <br></br>

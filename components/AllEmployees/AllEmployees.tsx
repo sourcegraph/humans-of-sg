@@ -6,9 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./AllEmployees.module.css";
 import { NavDropdown } from "react-bootstrap";
+import { useState } from "react";
 
 const AllEmployees = ({ allEmployees }) => {
-  console.log(allEmployees);
+  const [selectedDivision, setSelectedDivision] = useState(null);
+  const [selectedDepartment, setSelectedDepartment] = useState(null);
 
   const departments = {};
   let count = {};
@@ -28,6 +30,11 @@ const AllEmployees = ({ allEmployees }) => {
     departments[department] = [...existingDivisions, division];
   });
 
+  const handleDivisionClick = (department, division) => {
+    setSelectedDepartment(department);
+    setSelectedDivision(division);
+  };
+
   return (
     <>
       <div className={styles.divisionTabs}>
@@ -38,18 +45,22 @@ const AllEmployees = ({ allEmployees }) => {
                 {Object.keys(departments).map((department, index) => {
                   const divisions = departments[department];
                   const uniqueDivisions = Array.from(new Set(divisions));
-                  console.log(department, uniqueDivisions);
-
                   if (uniqueDivisions.length > 1) {
                     return (
                       <NavDropdown
-                        title="Dropdown"
+                        title={department}
                         id="offcanvasNavbarDropdown"
                       >
                         {uniqueDivisions.map((division) => {
-                          console.log(division);
                           return (
-                            <NavDropdown.Item key={division} href="#action3">
+                            <NavDropdown.Item
+                              key={`event-${division}-${index}`}
+                              href="#action3"
+                              eventKey={`event-${department}-${division}`}
+                              onClick={() =>
+                                handleDivisionClick(department, division)
+                              }
+                            >
                               {division}
                             </NavDropdown.Item>
                           );
@@ -62,7 +73,10 @@ const AllEmployees = ({ allEmployees }) => {
                         <Nav.Link
                           className={styles.navLink}
                           key={`event-${index}`}
-                          eventKey={`event-${index}`}
+                          eventKey={`event-${department}-Support`}
+                          onClick={() =>
+                            handleDivisionClick(department, "Support")
+                          }
                         >
                           {
                             <span className={styles.departmentCount}>
@@ -70,9 +84,9 @@ const AllEmployees = ({ allEmployees }) => {
                             </span>
                           }
                           {
-                            <span className={styles.departmentCount}>
-                              {count[department]}
-                            </span>
+                            // <span className={styles.departmentCount}>
+                            //   {count[department]}
+                            // </span>
                           }
                         </Nav.Link>
                       </Nav.Item>
@@ -89,16 +103,16 @@ const AllEmployees = ({ allEmployees }) => {
                     <>
                       <Tab.Pane
                         key={`pane-${index}`}
-                        eventKey={`event-${index}`}
+                        eventKey={`event-${department}-${selectedDivision}`}
                         className={styles.tabPane}
                       >
                         <div className={styles.tabPane}>
                           {allEmployees
                             .filter(
                               (employee) =>
-                                employee.department?.split("-")[0] ===
-                                  department?.split("-")[0] &&
-                                employee.status != "Inactive",
+                                employee.division === selectedDivision &&
+                                employee.department === selectedDepartment,
+                              // employee.status != "Inactive",
                             )
                             .map((employee) => (
                               <EmployeeCard employee={employee} />

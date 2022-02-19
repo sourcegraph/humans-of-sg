@@ -16,9 +16,8 @@ import styles from "../Carousel/Carousel.module.css";
 // 0, 1, 2, 3, 4
 
 const Carousel = ({ activeNewHires }) => {
-  console.log(activeNewHires);
-
   // console.log(activeNewHires);
+
   // TODO: If activeNewHires.length < 5, show them in the carousel but with the buttons disabled.
 
   // activeNewHires is array of employees

@@ -6,7 +6,12 @@ import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
 import Carousel from "../components/Carousel/Carousel";
 
+import Unauthorized from "../components/Unauthorized";
+import { useSession } from "next-auth/client";
+
 const Home = ({ recentChangeEmployees, allEmployees }) => {
+  const [session, loading] = useSession();
+
   if (!recentChangeEmployees) {
     return <h4>Theres nothing to show right now</h4>;
   }
@@ -45,13 +50,18 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
           Familiarize yourself with our teammates and organization.
         </p>
       </div>
-
-      <div>
-        <Carousel activeNewHires={activeNewHires} />
-      </div>
-      <div>
-        <AllEmployees allEmployees={allEmployees} />
-      </div>
+      {session ? (
+        <>
+          <div>
+            <Carousel activeNewHires={activeNewHires} />
+          </div>
+          <div>
+            <AllEmployees allEmployees={allEmployees} />
+          </div>
+        </>
+      ) : (
+        <Unauthorized></Unauthorized>
+      )}
     </>
   );
 };

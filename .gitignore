@@ -2,7 +2,7 @@
 
 
 # okta 
-.okta.env
+/.okta.env
 
 # dependencies
 /node_modules

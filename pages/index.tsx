@@ -5,12 +5,14 @@ import Image from "next/image";
 import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
 import Carousel from "../components/Carousel/Carousel";
-
+import Search from "../components/Search/Search";
 import Unauthorized from "../components/Unauthorized";
 import { useSession } from "next-auth/client";
+import { useState } from "react";
 
 const Home = ({ recentChangeEmployees, allEmployees }) => {
   const [session, loading] = useSession();
+  const [activeSearch, setActiveSearch] = useState(false);
 
   if (!recentChangeEmployees) {
     return <h4>Theres nothing to show right now</h4>;
@@ -27,6 +29,10 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
     (employee) =>
       employee.status != "Inactive" && new Date(employee.hireDate) < new Date(),
   );
+
+  // const test = if (activeSearch) {
+  //   test = <EmployeeCard />
+  // } else {test = null}
 
   return (
     <>
@@ -50,17 +56,32 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
           Familiarize yourself with our teammates and organization.
         </p>
       </div>
+
       {session ? (
         <>
           <div>
-            <Carousel activeNewHires={activeNewHires} />
+            <Search
+              allEmployees={allEmployees}
+              activeSearch={activeSearch}
+              setActiveSearch={setActiveSearch}
+            />
           </div>
-          <div>
-            <AllEmployees allEmployees={allEmployees} />
+
+          <div
+            className={
+              activeSearch ? styles.activeSearch : styles.defaultContent
+            }
+          >
+            <div>
+              <Carousel activeNewHires={activeNewHires} />
+            </div>
+            <div>
+              <AllEmployees allEmployees={allEmployees} />
+            </div>
           </div>
         </>
       ) : (
-        <Unauthorized></Unauthorized>
+        <Unauthorized />
       )}
     </>
   );

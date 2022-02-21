@@ -44,7 +44,7 @@ const AllEmployees = ({ allEmployees }) => {
               <Nav variant="pills" className="flex-column">
                 {Object.keys(departments).map((department, index) => {
                   const divisions = departments[department];
-                  const uniqueDivisions = Array.from(new Set(divisions));
+                  const uniqueDivisions = Array.from(new Set(divisions)).sort();
                   if (uniqueDivisions.length > 1) {
                     return (
                       <NavDropdown

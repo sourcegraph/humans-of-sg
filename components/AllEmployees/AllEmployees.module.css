@@ -6,12 +6,6 @@
   /* display: flex; */
 }
 
-.tabPane {
-  /* align-items: flex-end; */
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .navLink {
   display: flex;
   justify-content: space-between;

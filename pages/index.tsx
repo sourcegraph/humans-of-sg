@@ -135,6 +135,8 @@ export async function getServerSideProps() {
       fields: [
         "firstName",
         "lastName",
+        "preferredName",
+        "displayName",
         "customGitHub",
         "jobTitle",
         "workEmail",
@@ -146,7 +148,6 @@ export async function getServerSideProps() {
         "status",
         "division",
         "pronouns",
-        "preferredName",
         // "customPreferredSurname",
       ],
     }),

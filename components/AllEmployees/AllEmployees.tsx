@@ -106,7 +106,7 @@ const AllEmployees = ({ allEmployees }) => {
                         eventKey={`event-${department}-${selectedDivision}`}
                         className={styles.tabPane}
                       >
-                        <div className={styles.tabPane}>
+                        <div className="tabPane">
                           {allEmployees
                             .filter(
                               (employee) =>

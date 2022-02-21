@@ -22,3 +22,10 @@
 .mutedText {
   font-style: italic;
 }
+
+.defaultContent {
+}
+
+.activeSearch {
+  display: none;
+}

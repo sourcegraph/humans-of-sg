@@ -5,20 +5,35 @@ import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./AllEmployees.module.css";
+import { NavDropdown } from "react-bootstrap";
+import { useState } from "react";
 
 const AllEmployees = ({ allEmployees }) => {
-  const divisions = new Set();
+  const [selectedDivision, setSelectedDivision] = useState(null);
+  const [selectedDepartment, setSelectedDepartment] = useState(null);
 
+  const departments = {};
   let count = {};
-  allEmployees.employees.forEach((employee) => {
-    const division = employee.division?.split("-")[0];
-    divisions.add(division);
-    if (count[division] === undefined) {
-      count[division] = 0;
-    } else {
-      ++count[division];
+
+  allEmployees.forEach((employee) => {
+    const department = employee.department;
+    const division = employee.division;
+    if (!department) {
+      return;
     }
+    if (count[department] === undefined) {
+      count[department] = 1;
+    } else {
+      ++count[department];
+    }
+    const existingDivisions = departments[department] || [];
+    departments[department] = [...existingDivisions, division];
   });
+
+  const handleDivisionClick = (department, division) => {
+    setSelectedDepartment(department);
+    setSelectedDivision(division);
+  };
 
   return (
     <>
@@ -27,47 +42,86 @@ const AllEmployees = ({ allEmployees }) => {
           <Row>
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
-                {[...divisions].map((division, index) => (
-                  <>
-                    <Nav.Item key={`nav-${division}`}>
-                      <Nav.Link
-                        key={`event-${index}`}
-                        eventKey={`event-${index}`}
+                {Object.keys(departments).map((department, index) => {
+                  const divisions = departments[department];
+                  const uniqueDivisions = Array.from(new Set(divisions)).sort();
+                  if (uniqueDivisions.length > 1) {
+                    return (
+                      <NavDropdown
+                        title={department}
+                        id="offcanvasNavbarDropdown"
                       >
-                        <span className={styles.test}>
-                          {division + " " + count[division]}
-                        </span>
-                      </Nav.Link>
-                    </Nav.Item>
-                  </>
-                ))}
+                        {uniqueDivisions.map((division) => {
+                          return (
+                            <NavDropdown.Item
+                              key={`event-${division}-${index}`}
+                              href="#action3"
+                              eventKey={`event-${department}-${division}`}
+                              onClick={() =>
+                                handleDivisionClick(department, division)
+                              }
+                            >
+                              {division}
+                            </NavDropdown.Item>
+                          );
+                        })}
+                      </NavDropdown>
+                    );
+                  } else {
+                    return (
+                      <Nav.Item key={`nav-${department}`}>
+                        <Nav.Link
+                          className={styles.navLink}
+                          key={`event-${index}`}
+                          eventKey={`event-${department}-Support`}
+                          onClick={() =>
+                            handleDivisionClick(department, "Support")
+                          }
+                        >
+                          {
+                            <span className={styles.departmentCount}>
+                              {department}
+                            </span>
+                          }
+                          {
+                            // <span className={styles.departmentCount}>
+                            //   {count[department]}
+                            // </span>
+                          }
+                        </Nav.Link>
+                      </Nav.Item>
+                    );
+                  }
+                })}
               </Nav>
             </Col>
 
             <Col sm={9}>
               <Tab.Content>
-                {[...divisions].map((division, index) => (
-                  <>
-                    <Tab.Pane
-                      key={`pane-${index}`}
-                      eventKey={`event-${index}`}
-                      className={styles.tabPane}
-                    >
-                      <div className={styles.tabPane}>
-                        {allEmployees.employees
-                          .filter(
-                            (employee) =>
-                              employee.division?.split("-")[0] ===
-                                division?.split("-")[0] &&
-                              employee.status != "Inactive",
-                          )
-                          .map((employee) => (
-                            <EmployeeCard employee={employee} />
-                          ))}
-                      </div>
-                    </Tab.Pane>
-                  </>
-                ))}
+                {Object.keys(departments).map((department, index) => {
+                  return (
+                    <>
+                      <Tab.Pane
+                        key={`pane-${index}`}
+                        eventKey={`event-${department}-${selectedDivision}`}
+                        className={styles.tabPane}
+                      >
+                        <div className={styles.tabPane}>
+                          {allEmployees
+                            .filter(
+                              (employee) =>
+                                employee.division === selectedDivision &&
+                                employee.department === selectedDepartment,
+                              // employee.status != "Inactive",
+                            )
+                            .map((employee) => (
+                              <EmployeeCard employee={employee} />
+                            ))}
+                        </div>
+                      </Tab.Pane>
+                    </>
+                  );
+                })}
               </Tab.Content>
             </Col>
           </Row>

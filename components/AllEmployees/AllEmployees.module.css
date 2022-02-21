@@ -12,6 +12,7 @@
   flex-wrap: wrap;
 }
 
-.test {
-  text-align: right;
+.navLink {
+  display: flex;
+  justify-content: space-between;
 }

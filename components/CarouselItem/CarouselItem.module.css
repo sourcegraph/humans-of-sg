@@ -19,7 +19,7 @@
     background-color 1s;
 }
 
-.level-2 {
+.level2 {
   height: 150px;
   width: 110px;
   line-height: 150px;
@@ -27,7 +27,7 @@
   left: 650px;
   margin-top: 25px;
 }
-.level-1 {
+.level1 {
   height: 180px;
   width: 130px;
   line-height: 180px;
@@ -42,7 +42,7 @@
   background-color: #4ec9e1;
   left: 330px;
 }
-.level1 {
+.level-1 {
   height: 180px;
   width: 130px;
   line-height: 180px;
@@ -50,7 +50,7 @@
   margin-top: 10px;
   left: 180px;
 }
-.level2 {
+.level-2 {
   height: 150px;
   width: 110px;
   line-height: 150px;

@@ -5,10 +5,14 @@ import Image from "next/image";
 import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
 import Carousel from "../components/Carousel/Carousel";
+import Search from "../components/Search/Search";
+import Unauthorized from "../components/Unauthorized";
+import { useSession } from "next-auth/client";
+import { useState } from "react";
 
 const Home = ({ recentChangeEmployees, allEmployees }) => {
-  console.log(recentChangeEmployees);
-  console.log(allEmployees);
+  const [session, loading] = useSession();
+  const [activeSearch, setActiveSearch] = useState(false);
 
   if (!recentChangeEmployees) {
     return <h4>Theres nothing to show right now</h4>;
@@ -23,9 +27,12 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
 
   const activeNewHires = employeesByHireDate.filter(
     (employee) =>
-      employee.status !== "Inactive" &&
-      new Date(employee.hireDate) < new Date(),
+      employee.status != "Inactive" && new Date(employee.hireDate) < new Date(),
   );
+
+  // const test = if (activeSearch) {
+  //   test = <EmployeeCard />
+  // } else {test = null}
 
   return (
     <>
@@ -50,12 +57,32 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
         </p>
       </div>
 
-      <div>
-        <Carousel activeNewHires={activeNewHires} />
-      </div>
-      <div>
-        <AllEmployees allEmployees={allEmployees} />
-      </div>
+      {session ? (
+        <>
+          <div>
+            <Search
+              allEmployees={allEmployees}
+              activeSearch={activeSearch}
+              setActiveSearch={setActiveSearch}
+            />
+          </div>
+
+          <div
+            className={
+              activeSearch ? styles.activeSearch : styles.defaultContent
+            }
+          >
+            <div>
+              <Carousel activeNewHires={activeNewHires} />
+            </div>
+            <div>
+              <AllEmployees allEmployees={allEmployees} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <Unauthorized />
+      )}
     </>
   );
 };
@@ -140,6 +167,9 @@ export async function getServerSideProps() {
     allEmployeeOptions,
   )
     .then((response) => response.json())
+    .then((data) =>
+      data.employees.filter((employee) => employee.status != "Inactive"),
+    )
     .catch((err) => console.error(err));
 
   return {

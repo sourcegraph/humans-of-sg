@@ -18,9 +18,3 @@ a {
 li {
   list-style-type: none;
 }
-
-.tabPane {
-  /* align-items: flex-end; */
-  display: flex;
-  flex-wrap: wrap;
-}

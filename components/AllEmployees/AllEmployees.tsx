@@ -15,6 +15,8 @@ const AllEmployees = ({ allEmployees }) => {
   const departments = {};
   let count = {};
 
+  console.log(count);
+
   allEmployees.forEach((employee) => {
     const department = employee.department;
     const division = employee.division;
@@ -48,14 +50,23 @@ const AllEmployees = ({ allEmployees }) => {
                   if (uniqueDivisions.length > 1) {
                     return (
                       <NavDropdown
-                        title={department}
+                        title={
+                          department +
+                          "           " +
+                          "(" +
+                          count[department] +
+                          ")"
+                        }
                         id="offcanvasNavbarDropdown"
+                        // className={
+                        //   selectedDivision ? styles.selectedDivision : null
+                        // }
                       >
                         {uniqueDivisions.map((division) => {
                           return (
                             <NavDropdown.Item
                               key={`event-${division}-${index}`}
-                              href="#action3"
+                              // href={division}
                               eventKey={`event-${department}-${division}`}
                               onClick={() =>
                                 handleDivisionClick(department, division)
@@ -78,16 +89,11 @@ const AllEmployees = ({ allEmployees }) => {
                             handleDivisionClick(department, "Support")
                           }
                         >
-                          {
-                            <span className={styles.departmentCount}>
-                              {department}
-                            </span>
-                          }
-                          {
-                            // <span className={styles.departmentCount}>
-                            //   {count[department]}
-                            // </span>
-                          }
+                          {department +
+                            "           " +
+                            "(" +
+                            count[department] +
+                            ")"}
                         </Nav.Link>
                       </Nav.Item>
                     );
@@ -106,7 +112,7 @@ const AllEmployees = ({ allEmployees }) => {
                         eventKey={`event-${department}-${selectedDivision}`}
                         className={styles.tabPane}
                       >
-                        <div className="tabPane">
+                        <div className={styles.tabPane}>
                           {allEmployees
                             .filter(
                               (employee) =>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
+import styles from "./Search.module.css";
 
 const Search = ({ allEmployees, setActiveSearch }) => {
   // console.log(allEmployees);
@@ -17,18 +18,16 @@ const Search = ({ allEmployees, setActiveSearch }) => {
 
   return (
     <>
-      <h1>Search</h1>
-      <div>
-        <input placeholder="Search" onChange={handleSearchInput} />
+      <div className={styles.searchContainer}>
+        <input placeholder="Search for Employee" onChange={handleSearchInput} />
       </div>
 
-      <div className="tabPane">
+      <div className={styles.tabPane}>
         {allEmployees
           .filter((employee) => {
             if (query === "") {
               return;
             } else if (employee.displayName.toLowerCase().includes(query)) {
-              console.log(employee);
               return employee;
             }
           })

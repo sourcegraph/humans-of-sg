@@ -21,8 +21,6 @@ const EmployeeCard = ({ employee }) => {
               {employee.firstName + " " + employee.lastName}
             </p>
           )}
-
-          <p>{employee.hireDate}</p>
         </div>
         <div className={styles.jobDetails}>
           <p>{employee.department}</p>

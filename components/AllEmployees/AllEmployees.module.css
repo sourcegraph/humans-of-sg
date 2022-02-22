@@ -6,13 +6,17 @@
   /* display: flex; */
 }
 
-.tabPane {
-  /* align-items: flex-end; */
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .navLink {
   display: flex;
   justify-content: space-between;
+}
+
+.tabPane {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px; /* row-gap column gap */
+}
+
+.selectedDivision {
+  background-color: #0d6efd;
 }

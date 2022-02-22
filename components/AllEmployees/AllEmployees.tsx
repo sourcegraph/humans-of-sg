@@ -60,9 +60,9 @@ const AllEmployees = ({ allEmployees }) => {
                         id="offcanvasNavbarDropdown"
                         // eventKey={`event-${department}-${selectedDivision}`}
 
-                        className={
-                          selectedDivision ? styles.selectedDivision : null
-                        }
+                        // className={
+                        //   selectedDivision ? styles.selectedDivision : null
+                        // }
                       >
                         {uniqueDivisions.map((division) => {
                           return (

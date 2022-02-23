@@ -162,7 +162,7 @@ export async function getServerSideProps() {
       data.employees.filter((employee) => new Date(employee.hireDate) > date),
     )
     .catch((err) => console.error(err));
-  //test
+
   const allEmployees: { any } = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
     allEmployeeOptions,

@@ -7,9 +7,8 @@ import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./AllEmployees.module.css";
 import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
-import { AppProps } from "next/app";
 
-const AllEmployees = ({ allEmployees }: AppProps) => {
+const AllEmployees = ({ allEmployees }) => {
   const [selectedDivision, setSelectedDivision] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 

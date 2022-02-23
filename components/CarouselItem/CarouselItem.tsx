@@ -4,10 +4,10 @@ import styles from "../CarouselItem/CarouselItem.module.css";
 const CarouselItem = ({ level, employee }) => {
   if (employee !== undefined) {
     return (
-      // <div className={styles.item + " " + styles["level" + level]}>
-      <EmployeeCard employee={employee} />
-      // <div className={styles.test}>{employee.firstName}</div>
-      // </div>
+      <div className={styles.item + " " + styles["level" + level]}>
+        {/* <EmployeeCard employee={employee} /> */}
+        <div className={styles.test}>{employee.firstName}</div>
+      </div>
     );
   }
   return null;

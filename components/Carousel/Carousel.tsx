@@ -4,47 +4,22 @@ import { TransitionGroup } from "react-transition-group";
 import styles from "../Carousel/Carousel.module.css";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 
-// 10 Employees
-// The first employee is always the middle of the carousel to start
-// 9, 10, 0, 1, 2
-// Move left:
-// 8, 9, 10, 0, 1
-// Move right:
-// 9, 10, 0, 1, 2
-// Move right:
-// 10, 0, 1, 2, 3
-// Move right:
-// 0, 1, 2, 3, 4
-
 const Carousel = ({ activeNewHires }) => {
   console.log(activeNewHires);
 
-  // TODO: If activeNewHires.length < 5, show them in the carousel but with the buttons disabled.
-
-  // activeNewHires is array of employees
-  // We want up to 5 items visible in the carousel, with the first employee in the center
-  // e.g. if there are 10 employees, the employee we show leftmost in the carousel is the 9th one
   const [leftMostIndex, setLeftMostIndex] = React.useState(
     activeNewHires.length - 2,
   );
-  // e.g. if there are 10 employees, the employee we show rightmost in the carousel is the 3rd one
   const [rightMostIndex, setRightMostIndex] = React.useState(2);
   const [direction, setDirection] = React.useState("");
 
-  console.log(leftMostIndex, rightMostIndex, leftMostIndex > rightMostIndex);
-
   const visibleNewHires =
     leftMostIndex > rightMostIndex
-      ? // e.g. for 10 employees with leftmost at 9 and rightmost at 2, we want to show 9, 10, 0, 1, 2
-        activeNewHires
+      ? activeNewHires
           .slice(leftMostIndex, activeNewHires.length)
           .concat(activeNewHires.slice(0, rightMostIndex + 1))
-      : // e.g. for 10 employees with leftmost at 2 and rightmost at 6, we want to show 2, 3, 4, 5, 6
-        activeNewHires.slice(leftMostIndex, rightMostIndex + 1);
+      : activeNewHires.slice(leftMostIndex, rightMostIndex + 1);
 
-  // console.log(visibleNewHires);
-
-  //useCallback only about defining the function....
   const leftClick = React.useCallback(() => {
     setLeftMostIndex(
       leftMostIndex === 0 ? activeNewHires.length - 1 : leftMostIndex - 1,

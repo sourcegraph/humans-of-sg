@@ -7,8 +7,8 @@ const EmployeeCard = ({ employee }) => {
 
   return (
     <div className={styles.card}>
-      <div className={styles.photo}>
-        <img src={employee.photoUrl} />
+      <div className={styles.photoContainer}>
+        <img src={employee.photoUrl} className={styles.photo} />
       </div>
       <div className={styles.employeeInfo}>
         <div className={styles.name}>
@@ -23,8 +23,8 @@ const EmployeeCard = ({ employee }) => {
           )}
         </div>
         <div className={styles.jobDetails}>
-          <p>{employee.department}</p>
-          <p>{employee.division}</p>
+          {/* <p>{employee.department}</p>
+          <p>{employee.division}</p> */}
           <p>{employee.jobTitle}</p>
         </div>
       </div>

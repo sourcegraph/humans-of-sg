@@ -22,12 +22,12 @@ const Modal = ({ setModal, employee }) => {
           <div className={styles.modalRightPanel}>
             <div className={styles.employeeInfo}>
               <span className={styles.employeeInfoText}>
-                {employee.preferredName}
-              </span>
-
-              <br></br>
-              <span className={styles.employeeInfoText}>
-                {employee.customPronouns}
+                {employee.preferredName
+                  ? employee.preferredName + " " + employee.lastName
+                  : employee.firstName + " " + employee.lastName}
+                {employee.customPronouns
+                  ? "," + " " + employee.customPronouns
+                  : null}
               </span>
 
               <br></br>

@@ -1,24 +1,36 @@
 .card {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  width: 200px;
+  border: 1px solid #dbe2f0;
+  width: 220px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.photoContainer {
+  display: flex;
+  justify-content: center;
+  /* background-color: green; */
 }
 
 .photo {
-  display: flex;
-  justify-content: center;
+  border-radius: 70px;
+  width: 7em;
+  height: 7em;
 }
 
 .employeeInfo {
+  /* background-color: red; */
+  padding-top: 15%;
 }
 
 .employeeName {
   text-align: center;
   font-weight: bold;
   color: navy;
+  text-decoration: underline;
 }
 
 .jobDetails {
-  padding-left: 3%;
+  text-align: center;
 }

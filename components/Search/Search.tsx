@@ -19,7 +19,11 @@ const Search = ({ allEmployees, setActiveSearch }) => {
   return (
     <>
       <div className={styles.searchContainer}>
-        <input placeholder="Search for Employee" onChange={handleSearchInput} />
+        <input
+          className={styles.searchBar}
+          placeholder="Search for Employee"
+          onChange={handleSearchInput}
+        />
       </div>
 
       <div className={styles.tabPane}>

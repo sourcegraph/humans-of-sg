@@ -1,7 +1,11 @@
 .divisionTabs {
-  padding: 125px;
+  /* padding: 125px; */
+  margin: 150px 125px;
 }
 
+.allEmployeesHeader {
+  text-align: center;
+}
 .tabContent {
   /* display: flex; */
 }

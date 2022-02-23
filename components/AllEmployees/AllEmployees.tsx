@@ -7,8 +7,9 @@ import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./AllEmployees.module.css";
 import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
+import { AppProps } from "next/app";
 
-const AllEmployees = ({ allEmployees }) => {
+const AllEmployees = ({ allEmployees }: AppProps) => {
   const [selectedDivision, setSelectedDivision] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 
@@ -37,6 +38,7 @@ const AllEmployees = ({ allEmployees }) => {
 
   return (
     <>
+      <h2 className={styles.allEmployeesHeader}>Our Organization</h2>
       <div className={styles.divisionTabs}>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>

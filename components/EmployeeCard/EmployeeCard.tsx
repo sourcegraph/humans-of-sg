@@ -2,7 +2,7 @@ import styles from "./EmployeeCard.module.css";
 import React from "react";
 import Modal from "../Modal/Modal";
 
-const EmployeeCard = ({ employee }) => {
+const EmployeeCard = (employee: { [key: string]: any }) => {
   const [modal, setModal] = React.useState(false);
 
   return (

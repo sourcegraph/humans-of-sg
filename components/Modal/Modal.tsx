@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Modal.module.css";
 
-const Modal = ({ setModal, employee }) => {
+const Modal = (setModal, employee: { [key: string]: any }) => {
   function onClose() {
     setModal(false);
   }

@@ -1,7 +1,7 @@
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "../CarouselItem/CarouselItem.module.css";
 
-const CarouselItem = ({ level, employee }) => {
+const CarouselItem = (level: number, employee: { [key: string]: any }) => {
   if (employee !== undefined) {
     return (
       <div className={styles.item + " " + styles["level" + level]}>

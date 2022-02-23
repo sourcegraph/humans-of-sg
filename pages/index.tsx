@@ -10,7 +10,11 @@ import Unauthorized from "../components/Unauthorized";
 import { useSession } from "next-auth/client";
 import { useState } from "react";
 
-const Home = ({ recentChangeEmployees, allEmployees }) => {
+const Home = (
+  // recentChangeEmployees: { [key: string]: any },
+  // allEmployees: { [key: string]: any },
+  { recentChangeEmployees, allEmployees },
+) => {
   console.log(allEmployees);
 
   const [session, loading] = useSession();
@@ -21,14 +25,14 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
   }
 
   const employeesByHireDate = recentChangeEmployees.sort(function (
-    employee1,
-    employee2,
+    employee1: { [key: string]: any },
+    employee2: { [key: string]: any },
   ) {
     return new Date(employee2.hireDate) - new Date(employee1.hireDate);
   });
 
   const activeNewHires = employeesByHireDate.filter(
-    (employee) =>
+    (employee: { [key: string]: any }) =>
       employee.status != "Inactive" && new Date(employee.hireDate) < new Date(),
   );
 
@@ -161,17 +165,22 @@ export async function getServerSideProps() {
   )
     .then((response) => response.json())
     .then((data) =>
-      data.employees.filter((employee) => new Date(employee.hireDate) > date),
+      data.employees.filter(
+        (employee: { [key: string]: any }) =>
+          new Date(employee.hireDate) > date,
+      ),
     )
     .catch((err) => console.error(err));
 
-  const allEmployees: { any } = await fetch(
+  const allEmployees: { [key: string]: any } = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
     allEmployeeOptions,
   )
     .then((response) => response.json())
     .then((data) =>
-      data.employees.filter((employee) => employee.status != "Inactive"),
+      data.employees.filter(
+        (employee: { [key: string]: any }) => employee.status != "Inactive",
+      ),
     )
     .catch((err) => console.error(err));
 

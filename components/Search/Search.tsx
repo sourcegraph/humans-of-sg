@@ -28,14 +28,14 @@ const Search = ({ allEmployees, setActiveSearch }) => {
 
       <div className={styles.tabPane}>
         {allEmployees
-          .filter((employee) => {
+          .filter((employee: { [key: string]: any }) => {
             if (query === "") {
               return;
             } else if (employee.displayName.toLowerCase().includes(query)) {
               return employee;
             }
           })
-          .map((employee, index) => (
+          .map((employee: { [key: string]: any }, index) => (
             <EmployeeCard employee={employee} />
           ))}
       </div>

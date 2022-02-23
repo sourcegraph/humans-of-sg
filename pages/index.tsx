@@ -163,7 +163,7 @@ export async function getServerSideProps() {
     )
     .catch((err) => console.error(err));
 
-  const allEmployees = await fetch(
+  const allEmployees: { any } = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
     allEmployeeOptions,
   )

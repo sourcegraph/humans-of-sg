@@ -17,6 +17,6 @@
   gap: 10px 20px; /* row-gap column gap */
 }
 
-.selectedDivision {
+.active {
   background-color: #0d6efd;
 }

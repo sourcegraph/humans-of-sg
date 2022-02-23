@@ -15,8 +15,6 @@ const AllEmployees = ({ allEmployees }) => {
   const departments = {};
   let count = {};
 
-  console.log(count);
-
   allEmployees.forEach((employee) => {
     const department = employee.department;
     const division = employee.division;
@@ -49,36 +47,38 @@ const AllEmployees = ({ allEmployees }) => {
                   const uniqueDivisions = Array.from(new Set(divisions)).sort();
                   if (uniqueDivisions.length > 1) {
                     return (
-                      <NavDropdown
-                        title={
-                          department +
-                          "           " +
-                          "(" +
-                          count[department] +
-                          ")"
-                        }
-                        id="offcanvasNavbarDropdown"
-                        // eventKey={`event-${department}-${selectedDivision}`}
-
-                        // className={
-                        //   selectedDivision ? styles.selectedDivision : null
-                        // }
-                      >
-                        {uniqueDivisions.map((division) => {
-                          return (
-                            <NavDropdown.Item
-                              key={`event-${division}-${index}`}
-                              // href={division}
-                              eventKey={`event-${department}-${division}`}
-                              onClick={() =>
-                                handleDivisionClick(department, division)
-                              }
-                            >
-                              {division}
-                            </NavDropdown.Item>
-                          );
-                        })}
-                      </NavDropdown>
+                      <>
+                        <NavDropdown
+                          title={
+                            department +
+                            "                  " +
+                            "(" +
+                            count[department] +
+                            ")"
+                          }
+                          className={
+                            department === selectedDepartment
+                              ? "show"
+                              : "inactive"
+                          }
+                          id="offcanvasNavbarDropdown"
+                        >
+                          {uniqueDivisions.map((division) => {
+                            return (
+                              <NavDropdown.Item
+                                key={`event-${division}-${index}`}
+                                // href={division}
+                                eventKey={`event-${department}-${division}`}
+                                onClick={() =>
+                                  handleDivisionClick(department, division)
+                                }
+                              >
+                                {division}
+                              </NavDropdown.Item>
+                            );
+                          })}
+                        </NavDropdown>
+                      </>
                     );
                   } else {
                     return (
@@ -92,7 +92,7 @@ const AllEmployees = ({ allEmployees }) => {
                           }
                         >
                           {department +
-                            "           " +
+                            "                  " +
                             "(" +
                             count[department] +
                             ")"}

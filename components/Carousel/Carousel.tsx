@@ -2,6 +2,7 @@ import React from "react";
 import CarouselItem from "../CarouselItem/CarouselItem";
 import { TransitionGroup } from "react-transition-group";
 import styles from "../Carousel/Carousel.module.css";
+import EmployeeCard from "../EmployeeCard/EmployeeCard";
 
 // 10 Employees
 // The first employee is always the middle of the carousel to start
@@ -30,6 +31,8 @@ const Carousel = ({ activeNewHires }) => {
   const [rightMostIndex, setRightMostIndex] = React.useState(2);
   const [direction, setDirection] = React.useState("");
 
+  console.log(leftMostIndex, rightMostIndex, leftMostIndex > rightMostIndex);
+
   const visibleNewHires =
     leftMostIndex > rightMostIndex
       ? // e.g. for 10 employees with leftmost at 9 and rightmost at 2, we want to show 9, 10, 0, 1, 2
@@ -37,7 +40,7 @@ const Carousel = ({ activeNewHires }) => {
           .slice(leftMostIndex, activeNewHires.length)
           .concat(activeNewHires.slice(0, rightMostIndex + 1))
       : // e.g. for 10 employees with leftmost at 2 and rightmost at 6, we want to show 2, 3, 4, 5, 6
-        activeNewHires.slice(leftMostIndex, rightMostIndex);
+        activeNewHires.slice(leftMostIndex, rightMostIndex + 1);
 
   // console.log(visibleNewHires);
 
@@ -54,11 +57,12 @@ const Carousel = ({ activeNewHires }) => {
 
   const rightClick = React.useCallback(() => {
     setLeftMostIndex(
-      leftMostIndex === 0 ? activeNewHires.length - 1 : leftMostIndex + 1,
+      leftMostIndex === activeNewHires.length - 1 ? 0 : leftMostIndex + 1,
     );
 
-    // setRightMostIndex((rightMostIndex + 1) % activeNewHires.length);
-    setRightMostIndex(rightMostIndex + 1);
+    setRightMostIndex(
+      rightMostIndex === activeNewHires.length - 1 ? 0 : rightMostIndex + 1,
+    );
 
     setDirection("right");
   }, [activeNewHires.length, rightMostIndex]);
@@ -67,26 +71,36 @@ const Carousel = ({ activeNewHires }) => {
     return <CarouselItem key={index} employee={newHire} level={index - 2} />;
   });
 
-  return (
-    <div className={styles.carouselContainer}>
-      <div className={styles.arrow} onClick={leftClick}>
-        &larr;
-      </div>
+  if (activeNewHires.length >= 5) {
+    return (
+      <div className={styles.carouselContainer}>
+        <div className={styles.arrow} onClick={leftClick}>
+          &larr;
+        </div>
 
-      <div className={styles.carousel}>
-        <TransitionGroup
-          className={styles.carouselItems}
-          transitionname={direction}
-        >
-          {carouselItems}
-        </TransitionGroup>
-      </div>
+        <div className={styles.carousel}>
+          <TransitionGroup
+            className={styles.carouselItems}
+            transitionname={direction}
+          >
+            {carouselItems}
+          </TransitionGroup>
+        </div>
 
-      <div className={styles.arrow} onClick={rightClick}>
-        &rarr;
+        <div className={styles.arrow} onClick={rightClick}>
+          &rarr;
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className={styles.carouselContainer}>
+        {activeNewHires.map((employee) => {
+          return <EmployeeCard employee={employee} />;
+        })}
+      </div>
+    );
+  }
 };
 
 export default Carousel;

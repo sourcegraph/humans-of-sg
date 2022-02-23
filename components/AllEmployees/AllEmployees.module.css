@@ -3,6 +3,9 @@
   margin: 150px 125px;
 }
 
+.allEmployeesHeader {
+  text-align: center;
+}
 .tabContent {
   /* display: flex; */
 }

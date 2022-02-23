@@ -5,8 +5,6 @@ import styles from "../Carousel/Carousel.module.css";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 
 const Carousel = ({ activeNewHires }) => {
-  console.log(activeNewHires);
-
   const [leftMostIndex, setLeftMostIndex] = React.useState(
     activeNewHires.length - 2,
   );
@@ -48,24 +46,29 @@ const Carousel = ({ activeNewHires }) => {
 
   if (activeNewHires.length >= 5) {
     return (
-      <div className={styles.carouselContainer}>
-        <div className={styles.arrow} onClick={leftClick}>
-          &larr;
-        </div>
+      <>
+        <h2 className={styles.carouselHeader}>
+          Weclome to our {activeNewHires.length} recent new hires!
+        </h2>
+        <div className={styles.carouselContainer}>
+          <div className={styles.arrow} onClick={leftClick}>
+            &larr;
+          </div>
 
-        <div className={styles.carousel}>
-          <TransitionGroup
-            className={styles.carouselItems}
-            transitionname={direction}
-          >
-            {carouselItems}
-          </TransitionGroup>
-        </div>
+          <div className={styles.carousel}>
+            <TransitionGroup
+              className={styles.carouselItems}
+              transitionname={direction}
+            >
+              {carouselItems}
+            </TransitionGroup>
+          </div>
 
-        <div className={styles.arrow} onClick={rightClick}>
-          &rarr;
+          <div className={styles.arrow} onClick={rightClick}>
+            &rarr;
+          </div>
         </div>
-      </div>
+      </>
     );
   } else {
     return (

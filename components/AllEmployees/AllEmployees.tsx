@@ -38,6 +38,7 @@ const AllEmployees = ({ allEmployees }: AppProps) => {
 
   return (
     <>
+      <h2 className={styles.allEmployeesHeader}>Our Organization</h2>
       <div className={styles.divisionTabs}>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>

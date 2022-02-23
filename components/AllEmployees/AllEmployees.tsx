@@ -8,7 +8,7 @@ import styles from "./AllEmployees.module.css";
 import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
 
-const AllEmployees = ({ allEmployees }) => {
+const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
   const [selectedDivision, setSelectedDivision] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 

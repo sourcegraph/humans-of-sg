@@ -11,6 +11,8 @@ import { useSession } from "next-auth/client";
 import { useState } from "react";
 
 const Home = ({ recentChangeEmployees, allEmployees }) => {
+  console.log(allEmployees);
+
   const [session, loading] = useSession();
   const [activeSearch, setActiveSearch] = useState(false);
 

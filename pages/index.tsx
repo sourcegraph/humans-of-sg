@@ -33,10 +33,6 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
       employee.status != "Inactive" && new Date(employee.hireDate) < new Date(),
   );
 
-  // const test = if (activeSearch) {
-  //   test = <EmployeeCard />
-  // } else {test = null}
-
   return (
     <>
       <Head>
@@ -92,7 +88,7 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
 
 export async function getServerSideProps() {
   let date: Date | string = new Date();
-  date.setDate(date.getDate() - 14);
+  date.setDate(date.getDate() - 30);
 
   //manipulating ISO string as bamboo API doesnt accept milliseconds
   let fixedDate = date.toISOString().split(".")[0] + "Z";
@@ -150,7 +146,7 @@ export async function getServerSideProps() {
         "hireDate",
         "status",
         "division",
-        "pronouns",
+        "customPronouns",
         // "customPreferredSurname",
       ],
     }),

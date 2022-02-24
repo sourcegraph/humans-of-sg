@@ -2,15 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   background-color: #f9fafb;
 }
 
 .lowCountHireContainer {
   display: flex;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   justify-content: center;
   gap: 10px 20px;
   background-color: #f9fafb;
@@ -19,10 +19,11 @@
 .carouselHeader {
   text-align: center;
   background-color: #f9fafb;
+  margin: 0;
 }
 
 .arrow {
-  margin: 50px;
+  padding: 50px;
 }
 
 .carousel {

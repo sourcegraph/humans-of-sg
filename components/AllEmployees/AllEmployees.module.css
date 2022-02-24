@@ -1,11 +1,12 @@
 .divisionTabs {
-  margin: 150px 125px;
+  padding: 150px 125px;
   background-color: #f9fafb;
 }
 
 .allEmployeesHeader {
   text-align: center;
   background-color: #f9fafb;
+  margin: 0;
 }
 
 .navLink {

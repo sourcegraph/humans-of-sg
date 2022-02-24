@@ -23,6 +23,7 @@
 
 .mutedText {
   font-style: italic;
+  margin: 0;
 }
 
 .signInContainer {

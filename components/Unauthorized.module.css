@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  border: 1px solid #dbe2f0;
+  border-radius: 6px;
+  margin: 100px;
+  justify-content: center;
+  width: 450px;
+  height: 300px;
+  text-align: center;
+  background-color: white;
+}
+
+.content {
+  justify-content: center;
+  font-size: large;
+  color: black;
+}
+
+.text {
+  margin: 30px;
+}
+
+.button {
+  color: white;
+  border-color: #0b70db;
+  background-color: #0b70db;
+}

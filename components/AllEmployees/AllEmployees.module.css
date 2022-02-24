@@ -1,13 +1,12 @@
 .divisionTabs {
-  /* padding: 125px; */
-  margin: 150px 125px;
+  padding: 150px 125px;
+  background-color: #f9fafb;
 }
 
 .allEmployeesHeader {
   text-align: center;
-}
-.tabContent {
-  /* display: flex; */
+  background-color: #f9fafb;
+  margin: 0;
 }
 
 .navLink {

@@ -9,10 +9,12 @@
 .logo {
   display: flex;
   justify-content: center;
+  background-color: #f9fafb;
 }
 
 .pageDescription {
   text-align: center;
+  background-color: #f9fafb;
 }
 
 .heavyText {
@@ -21,11 +23,15 @@
 
 .mutedText {
   font-style: italic;
-}
-
-.defaultContent {
+  margin: 0;
 }
 
 .activeSearch {
   display: none;
+}
+
+.signInContainer {
+  display: flex;
+  justify-content: center;
+  background-color: #f9fafb;
 }

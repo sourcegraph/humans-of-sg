@@ -115,7 +115,7 @@ const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
 
 export async function getServerSideProps() {
   let date: Date | string = new Date();
-  date.setDate(date.getDate() - 30);
+  date.setDate(date.getDate() - 14);
 
   //manipulating ISO string as bamboo API doesnt accept milliseconds
   let fixedDate = date.toISOString().split(".")[0] + "Z";

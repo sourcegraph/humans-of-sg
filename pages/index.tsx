@@ -10,11 +10,29 @@ import Unauthorized from "../components/Unauthorized";
 import { useSession } from "next-auth/client";
 import { useState } from "react";
 
-const Home = (
-  // recentChangeEmployees: { [key: string]: any },
-  // allEmployees: { [key: string]: any },
-  { recentChangeEmployees, allEmployees },
-) => {
+interface Employee {
+  recentChangeEmployees: { [key: string]: any };
+  allEmployees: { [key: string]: any };
+}
+
+// interface Employee {
+//   customGithub: string;
+//   customPronouns: string;
+//   department: string;
+//   division: string;
+//   firstName: string;
+//   hiredate: string;
+//   id: number;
+//   jobTitle: string;
+//   lastName: string;
+//   photoUploaded: boolean;
+//   photoUrl: string;
+//   preferredName: string;
+//   status: string;
+//   workEmail: string;
+// }
+
+const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
   console.log(allEmployees);
 
   const [session, loading] = useSession();
@@ -28,7 +46,10 @@ const Home = (
     employee1: { [key: string]: any },
     employee2: { [key: string]: any },
   ) {
-    return new Date(employee2.hireDate) - new Date(employee1.hireDate);
+    return (
+      new Date(employee2.hireDate).getTime() -
+      new Date(employee1.hireDate).getTime()
+    );
   });
 
   const activeNewHires = employeesByHireDate.filter(
@@ -68,7 +89,6 @@ const Home = (
           <div>
             <Search
               allEmployees={allEmployees}
-              activeSearch={activeSearch}
               setActiveSearch={setActiveSearch}
             />
           </div>

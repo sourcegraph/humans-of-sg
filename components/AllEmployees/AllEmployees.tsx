@@ -35,8 +35,6 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
     setSelectedDivision(division);
   };
 
-  console.log(departments);
-
   return (
     <>
       <h2 className={styles.allEmployeesHeader}>Our Organization</h2>

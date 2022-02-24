@@ -2,7 +2,11 @@ import styles from "./EmployeeCard.module.css";
 import React from "react";
 import Modal from "../Modal/Modal";
 
-const EmployeeCard = (employee: { [key: string]: any }) => {
+interface EmployeeCardProps {
+  employee: { [key: string]: any };
+}
+
+const EmployeeCard = ({ employee }: EmployeeCardProps) => {
   const [modal, setModal] = React.useState(false);
 
   return (
@@ -28,7 +32,7 @@ const EmployeeCard = (employee: { [key: string]: any }) => {
           <p>{employee.jobTitle}</p>
         </div>
       </div>
-      {modal && <Modal modal={modal} setModal={setModal} employee={employee} />}
+      {modal && <Modal setModal={setModal} employee={employee} />}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import { useSession } from "next-auth/client";
 import { useState } from "react";
 
 const Home = ({ recentChangeEmployees, allEmployees }) => {
+  console.log(recentChangeEmployees);
   console.log(allEmployees);
 
   const [session, loading] = useSession();
@@ -91,7 +92,7 @@ const Home = ({ recentChangeEmployees, allEmployees }) => {
 
 export async function getServerSideProps() {
   let date: Date | string = new Date();
-  date.setDate(date.getDate() - 30);
+  date.setDate(date.getDate() - 14);
 
   //manipulating ISO string as bamboo API doesnt accept milliseconds
   let fixedDate = date.toISOString().split(".")[0] + "Z";
@@ -165,7 +166,7 @@ export async function getServerSideProps() {
     )
     .catch((err) => console.error(err));
 
-  const allEmployees: { any } = await fetch(
+  const allEmployees = await fetch(
     "https://api.bamboohr.com/api/gateway.php/sourcegraph/v1/reports/custom?format=JSON",
     allEmployeeOptions,
   )

@@ -72,11 +72,16 @@ const Carousel = ({ activeNewHires }) => {
     );
   } else {
     return (
-      <div className={styles.carouselContainer}>
-        {activeNewHires.map((employee) => {
-          return <EmployeeCard employee={employee} />;
-        })}
-      </div>
+      <>
+        <h2 className={styles.carouselHeader}>
+          Weclome to our {activeNewHires.length} recent new hires!
+        </h2>
+        <div className={styles.lowCountHireContainer}>
+          {activeNewHires.map((employee) => {
+            return <EmployeeCard employee={employee} />;
+          })}
+        </div>
+      </>
     );
   }
 };

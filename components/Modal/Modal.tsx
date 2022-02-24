@@ -20,8 +20,8 @@ const Modal = ({ setModal, employee }: ModalProps) => {
               <img src={employee.photoUrl} />
             </div>
             <div className="employeeLinks">
-              <p>hi, I'm test link #1</p>
-              <p>hi, I'm test link #2</p>
+              <p>hi, Im test link #1</p>
+              <p>hi, Im test link #2</p>
             </div>
           </div>
           <div className={styles.modalRightPanel}>
@@ -51,10 +51,10 @@ const Modal = ({ setModal, employee }: ModalProps) => {
             </div>
             <div className={styles.employeeBio}>
               <p className={styles.employeeBioText}>
-                hi, I'm a test bio. hi, I'm a test bio. hi, I'm a test bio. hi,
-                I'm a test bio!! Yes, thats right! I'm a test bio and I love it.
-                Lets see what happens as my bio gets longer! Oh wow! It's
-                behaving as expected
+                hi, Im a test bio. hi, Im a test bio. hi, Im a test bio. hi, Im
+                a test bio!! Yes, thats right! Im a test bio and I love it. Lets
+                see what happens as my bio gets longer! Oh wow! Its behaving as
+                expected
               </p>
             </div>
           </div>

@@ -83,8 +83,10 @@ const Carousel = ({ activeNewHires }: CarouselProps) => {
           Weclome to our {activeNewHires.length} recent new hires!
         </h2>
         <div className={styles.lowCountHireContainer}>
-          {activeNewHires.map((employee: {[key: string]: any}) => {
-            return <EmployeeCard employee={employee} />;
+          {activeNewHires.map((employee: { [key: string]: any }) => {
+            return <EmployeeCard employee={employee} key={employee.id} />;
+
+
           })}
         </div>
       </>

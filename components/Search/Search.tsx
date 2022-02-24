@@ -39,7 +39,8 @@ const Search = ({ allEmployees, setActiveSearch }: SearchProps) => {
             }
           })
           .map((employee: { [key: string]: any }, index: number) => (
-            <EmployeeCard employee={employee} />
+            <EmployeeCard employee={employee} key={employee.id} />
+
           ))}
       </div>
     </>

@@ -124,7 +124,10 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                               // employee.status != "Inactive",
                             )
                             .map((employee: { [key: string]: any }) => (
-                              <EmployeeCard employee={employee} />
+                              <EmployeeCard
+                                employee={employee}
+                                key={employee.id}
+                              />
                             ))}
                         </div>
                       </Tab.Pane>

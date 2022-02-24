@@ -19,4 +19,16 @@ As this project grows, we expect to be able to:
 
 ## Development
 
-Being worked out with IT Tech Ops. (API keys)
+If you are a Sourcegraph employee who wishes to contribute to this project, log into [Bamboo](https://sourcegraph.bamboohr.com/home), select your icon in the top right and choose API keys from the dropdown. From there you'll be able to Add New Key.
+
+Once you have your API key, fork and clone the repository and add a file titled .env.local with the following variables:
+
+API_KEY=
+
+OKTA_CLIENTID=
+
+OKTA_CLIENTSECRET=
+
+OKTA_DOMAIN=
+
+NEXTAUTH_URL=http://localhost:3000

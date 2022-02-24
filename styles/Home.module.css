@@ -26,6 +26,10 @@
   margin: 0;
 }
 
+.activeSearch {
+  display: none;
+}
+
 .signInContainer {
   display: flex;
   justify-content: center;

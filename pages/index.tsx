@@ -103,7 +103,9 @@ const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
           </div>
         </>
       ) : (
-        <Unauthorized />
+        <div className={styles.signInContainer}>
+          <Unauthorized />
+        </div>
       )}
     </>
   );

@@ -4,6 +4,7 @@
   align-items: center;
   margin-top: 100px;
   margin-bottom: 100px;
+  background-color: #f9fafb;
 }
 
 .lowCountHireContainer {
@@ -11,11 +12,13 @@
   margin-top: 100px;
   margin-bottom: 100px;
   justify-content: center;
-  gap: 10px 20px; /* row-gap column gap */
+  gap: 10px 20px;
+  background-color: #f9fafb;
 }
 
 .carouselHeader {
   text-align: center;
+  background-color: #f9fafb;
 }
 
 .arrow {

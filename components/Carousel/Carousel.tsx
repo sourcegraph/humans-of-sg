@@ -4,7 +4,11 @@ import { TransitionGroup } from "react-transition-group";
 import styles from "../Carousel/Carousel.module.css";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 
-const Carousel = ({ activeNewHires }) => {
+interface CarouselProps {
+  activeNewHires: { [key: string]: any };
+}
+
+const Carousel = ({ activeNewHires }: CarouselProps) => {
   const [leftMostIndex, setLeftMostIndex] = React.useState(
     activeNewHires.length - 2,
   );
@@ -40,9 +44,11 @@ const Carousel = ({ activeNewHires }) => {
     setDirection("right");
   }, [activeNewHires.length, rightMostIndex]);
 
-  const carouselItems = visibleNewHires.map((newHire, index) => {
-    return <CarouselItem key={index} employee={newHire} level={index - 2} />;
-  });
+  const carouselItems = visibleNewHires.map(
+    (newHire: string[], index: number) => {
+      return <CarouselItem key={index} employee={newHire} level={index - 2} />;
+    },
+  );
 
   if (activeNewHires.length >= 5) {
     return (
@@ -77,7 +83,7 @@ const Carousel = ({ activeNewHires }) => {
           Weclome to our {activeNewHires.length} recent new hires!
         </h2>
         <div className={styles.lowCountHireContainer}>
-          {activeNewHires.map((employee) => {
+          {activeNewHires.map((employee: {[key: string]: any}) => {
             return <EmployeeCard employee={employee} />;
           })}
         </div>

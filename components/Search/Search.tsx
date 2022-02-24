@@ -2,12 +2,15 @@ import { useState } from "react";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./Search.module.css";
 
-const Search = ({ allEmployees, setActiveSearch }) => {
-  // console.log(allEmployees);
+interface SearchProps {
+  allEmployees: { [key: string]: any };
+  setActiveSearch: (activeSearch: boolean) => void;
+}
 
+const Search = ({ allEmployees, setActiveSearch }: SearchProps) => {
   const [query, setQuery] = useState("");
 
-  const handleSearchInput = (event) => {
+  const handleSearchInput = (event: any) => {
     setQuery(event.target.value);
     setActiveSearch(true);
 
@@ -28,14 +31,14 @@ const Search = ({ allEmployees, setActiveSearch }) => {
 
       <div className={styles.tabPane}>
         {allEmployees
-          .filter((employee) => {
+          .filter((employee: { [key: string]: any }) => {
             if (query === "") {
               return;
             } else if (employee.displayName.toLowerCase().includes(query)) {
               return employee;
             }
           })
-          .map((employee, index) => (
+          .map((employee: { [key: string]: any }, index: number) => (
             <EmployeeCard employee={employee} />
           ))}
       </div>

@@ -11,7 +11,7 @@ export default function Unauthorized() {
         <p>Please sign in here.</p>
 
         <p>
-          <button className="btn btn-secondary" onClick={signIn}>
+          <button className="btn btn-secondary" onClick={() => signIn()}>
             Sign in
           </button>
         </p>

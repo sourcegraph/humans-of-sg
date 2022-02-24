@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./Modal.module.css";
 
-const Modal = ({ setModal, employee }) => {
+export interface ModalProps {
+  setModal: any;
+  employee: { [key: string]: any };
+}
+
+const Modal = ({ setModal, employee }: ModalProps) => {
   function onClose() {
     setModal(false);
   }

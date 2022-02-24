@@ -9,15 +9,15 @@ import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
 
 const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
-  const [selectedDivision, setSelectedDivision] = useState(null);
-  const [selectedDepartment, setSelectedDepartment] = useState(null);
+  const [selectedDivision, setSelectedDivision] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState("");
 
-  const departments = {};
-  let count = {};
+  const departments: { [department: string]: any } = {};
+  let count: { [department: string]: any } = {};
 
-  allEmployees.forEach((employee) => {
-    const department = employee.department;
-    const division = employee.division;
+  allEmployees.forEach((employee: { [key: string]: any }) => {
+    const department: string = employee.department;
+    const division: string = employee.division;
     if (!department) {
       return;
     }
@@ -30,7 +30,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
     departments[department] = [...existingDivisions, division];
   });
 
-  const handleDivisionClick = (department, division) => {
+  const handleDivisionClick = (department: string, division: string) => {
     setSelectedDepartment(department);
     setSelectedDivision(division);
   };
@@ -44,7 +44,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
                 {Object.keys(departments).map((department, index) => {
-                  const divisions = departments[department];
+                  const divisions: string[] = departments[department];
                   const uniqueDivisions = Array.from(new Set(divisions)).sort();
                   if (uniqueDivisions.length > 1) {
                     return (
@@ -118,7 +118,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                         <div className={styles.tabPane}>
                           {allEmployees
                             .filter(
-                              (employee) =>
+                              (employee: { [key: string]: any }) =>
                                 employee.division === selectedDivision &&
                                 employee.department === selectedDepartment,
                               // employee.status != "Inactive",

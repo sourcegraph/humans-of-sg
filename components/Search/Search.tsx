@@ -34,13 +34,14 @@ const Search = ({ allEmployees, setActiveSearch }: SearchProps) => {
           .filter((employee: { [key: string]: any }) => {
             if (query === "") {
               return;
-            } else if (employee.displayName.toLowerCase().includes(query)) {
+            } else if (
+              employee.displayName.toLowerCase().includes(query.toLowerCase())
+            ) {
               return employee;
             }
           })
           .map((employee: { [key: string]: any }, index: number) => (
             <EmployeeCard employee={employee} key={employee.id} />
-
           ))}
       </div>
     </>

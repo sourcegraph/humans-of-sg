@@ -9,6 +9,8 @@ import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
 
 const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
+  console.log(allEmployees);
+
   const [selectedDivision, setSelectedDivision] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
 
@@ -37,7 +39,9 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
 
   return (
     <>
-      <h2 className={styles.allEmployeesHeader}>Our Organization</h2>
+      <h2 className={styles.allEmployeesHeader}>
+        The {allEmployees.length} Humans of Sourcegraph
+      </h2>
       <div className={styles.divisionTabs}>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
@@ -121,7 +125,6 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                               (employee: { [key: string]: any }) =>
                                 employee.division === selectedDivision &&
                                 employee.department === selectedDepartment,
-                              // employee.status != "Inactive",
                             )
                             .map((employee: { [key: string]: any }) => (
                               <EmployeeCard

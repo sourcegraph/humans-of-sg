@@ -13,7 +13,7 @@ export default function Unauthorized() {
         <p className={styles.text}>Please sign in here.</p>
 
         <p>
-          <button className="btn btn-secondary" onClick={() => signIn()}>
+          <button className="btn btn-secondary" onClick={() => signIn("okta")}>
             Sign in
           </button>
         </p>

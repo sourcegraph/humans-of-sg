@@ -9,8 +9,6 @@ import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
 
 const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
-  console.log(allEmployees);
-
   const [selectedDivision, setSelectedDivision] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
 

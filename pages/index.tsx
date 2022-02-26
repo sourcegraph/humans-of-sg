@@ -33,8 +33,6 @@ interface Employee {
 // }
 
 const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
-  console.log(allEmployees);
-
   const [session, loading] = useSession();
   const [activeSearch, setActiveSearch] = useState(false);
 

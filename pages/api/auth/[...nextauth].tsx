@@ -10,7 +10,7 @@ const options = {
       clientId: process.env.OKTA_CLIENTID,
       // domain: process.env.OKTA_DOMAIN + "/oauth2",
       domain: process.env.OKTA_DOMAIN,
-
+      //test
       protection: ["pkce", "state"],
     }),
     // ...add more providers here

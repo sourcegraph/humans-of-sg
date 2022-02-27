@@ -6,7 +6,7 @@ const options = {
   // Configure one or more authentication providers
   providers: [
     Providers.Okta({
-      idToken: true,
+      // idToken: true,
       clientId: process.env.OKTA_CLIENTID,
       clientSecret: process.env.OKTA_CLIENTSECRET,
 

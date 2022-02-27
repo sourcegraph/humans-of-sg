@@ -9,13 +9,43 @@ interface CarouselItemProps {
 const CarouselItem = ({ level, employee }: CarouselItemProps) => {
   if (employee !== undefined) {
     return (
-      <div className={styles.item + " " + styles["level" + level]}>
-        {/* <EmployeeCard employee={employee} /> */}
-        <div className={styles.test}>{employee.firstName}</div>
-      </div>
+      <>
+        <div className={styles.carouselItem + " " + styles["level" + level]}>
+          <div className={styles.carouselItemContent}>
+            <div className={styles.employeePhotoContainer}>
+              <img src={employee.photoUrl} className={styles.employeePhoto} />
+            </div>
+            <div className={styles.employeeInfo}>
+              <span className={styles.employeeInfoText}>
+                {employee.preferredName
+                  ? employee.preferredName + " " + employee.lastName
+                  : employee.firstName + " " + employee.lastName}
+                {employee.customPronouns
+                  ? "," + " " + employee.customPronouns
+                  : null}
+              </span>
+
+              <br></br>
+              <span className={styles.employeeInfoText}>
+                {employee.department}
+              </span>
+
+              <span className={styles.employeeInfoText}>
+                {employee.jobTitle}
+              </span>
+
+              <span className={styles.employeeInfoText}>
+                Start Date {employee.hireDate}
+              </span>
+
+              <br></br>
+              <span className={styles.employeeInfoText}>hashtags </span>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
-  return null;
 };
 
 export default CarouselItem;

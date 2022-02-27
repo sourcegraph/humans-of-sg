@@ -9,8 +9,6 @@ import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
 
 const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
-  console.log(allEmployees);
-
   const [selectedDivision, setSelectedDivision] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
 
@@ -110,6 +108,12 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
             </Col>
 
             <Col sm={9}>
+              {selectedDivision ? null : (
+                <div className={styles.noDepartmentClickText}>
+                  <p> Click a division name :)</p>
+                </div>
+              )}
+
               <Tab.Content>
                 {Object.keys(departments).map((department, index) => {
                   return (

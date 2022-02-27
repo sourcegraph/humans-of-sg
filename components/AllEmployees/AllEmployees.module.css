@@ -17,9 +17,20 @@
 .tabPane {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 20px; /* row-gap column gap */
+  gap: 10px 20px;
 }
 
 .active {
   background-color: #0d6efd;
+}
+
+.noDepartmentClickText {
+  text-align: center;
+  justify-content: center;
+  font-size: 40px;
+  align-content: center;
+  align-items: baseline;
+}
+.tesxting {
+  background-color: red;
 }

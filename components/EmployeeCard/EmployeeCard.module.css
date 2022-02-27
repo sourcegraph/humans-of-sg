@@ -10,7 +10,6 @@
 .photoContainer {
   display: flex;
   justify-content: center;
-  /* background-color: green; */
 }
 
 .photo {
@@ -20,15 +19,15 @@
 }
 
 .employeeInfo {
-  /* background-color: red; */
   padding-top: 15%;
 }
 
-.employeeName {
+.name {
   text-align: center;
+}
+.employeeName {
   font-weight: bold;
   color: navy;
-  text-decoration: underline;
 }
 
 .jobDetails {

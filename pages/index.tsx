@@ -15,26 +15,7 @@ interface Employee {
   allEmployees: { [key: string]: any };
 }
 
-// interface Employee {
-//   customGithub: string;
-//   customPronouns: string;
-//   department: string;
-//   division: string;
-//   firstName: string;
-//   hiredate: string;
-//   id: number;
-//   jobTitle: string;
-//   lastName: string;
-//   photoUploaded: boolean;
-//   photoUrl: string;
-//   preferredName: string;
-//   status: string;
-//   workEmail: string;
-// }
-
 const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
-  console.log(allEmployees);
-
   const [session, loading] = useSession();
   const [activeSearch, setActiveSearch] = useState(false);
 

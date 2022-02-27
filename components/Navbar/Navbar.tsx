@@ -8,6 +8,8 @@ const Navbar = () => {
         <p>Sourcegraph</p>
       </div>
       <div className={styles.rightLinks}>
+        <p>Explore</p>
+        <p>Blog</p>
         <p>About Sourcegraph</p>
         <p>Sourcegraph.com</p>
       </div>

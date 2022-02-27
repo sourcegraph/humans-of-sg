@@ -7,28 +7,21 @@ Humans of Sourcegraph is currently being built as an internal tool with a simila
 As this project grows, we expect to be able to:
 
 - Bios will likely be collected during onboarding using Bamboo, from there the bios will be imported into Humans of Sourcegraph, and you will be able to view and edit your bio from this page.
+- Add custom fields to bamboo/onboarding. Example: A #hashtags field where individuals can list their interests that will be listed in their card
+- Add an 'Explore' section, where you can search for employees by location, #hashtags (#cooking, #hiking) and more... (#EngineeringMentor) to help facilitate exisiting company efforts like pairing mentees and mentors.
+- [Beam?] Internal blog built in (https://planetscale.com/blog/introducing-beam)
 - Explore how to integrate HoSG into our handbook and allow for a public version
-- Add custom fields to bamboo/onboarding like the ability for individuals to add #hashtags and more that can display in their profile on Humans of Sourcegraph
-- Add an 'Explore' section, where you can search for employees by location, #hashtags (interests), and more.
 
 ## Visions
 
 - Make the site more 'profile like'
 - Add to the Sourcegraph repository
-- Add Sourcegraph components
+- Add Sourcegraph designs and components
 
 ## Development
 
-If you are a Sourcegraph employee who wishes to contribute to this project, log into [Bamboo](https://sourcegraph.bamboohr.com/home), select your icon in the top right and choose API keys from the dropdown. From there you'll be able to Add New Key.
+If you are a Sourcegraph employee who wishes to contribute to this project, log into [Bamboo](https://sourcegraph.bamboohr.com/home), select your icon in the top right and select choose API keys from the dropdown. From there you'll be able to Add New Key.
 
-Once you have your API key, fork and clone the repository and add a file titled .env.local with the following variables:
+Once you have your API key, fork and clone the repository and add a file titled .env.local using the template found in .env.sample
 
-API_KEY=
-
-OKTA_CLIENTID=
-
-OKTA_CLIENTSECRET=
-
-OKTA_DOMAIN=
-
-NEXTAUTH_URL=http://localhost:3000
+Look for a note in 1Password titiled "TITLE" in order to retrieve the secret values.

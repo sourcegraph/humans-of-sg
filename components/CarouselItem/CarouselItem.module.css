@@ -1,47 +1,67 @@
-.item {
-  display: flex;
-  color: white;
+.carouselItem {
+  /* display: flex; */
+  /* color: white;
   font-size: 20px;
   transition: height 1s, width 1s, left 1s, margin-top 1s, line-height 1s,
-    background-color 1s;
+    background-color 1s; */
+  border-radius: 10px;
+  background-color: #f9fafb;
+}
+
+.carouselItemContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.employeePhotoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.employeePhoto {
+  border-radius: 70px;
+  width: 5em;
+  height: 5em;
+}
+
+.employeeInfo {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .level2 {
-  height: 240px;
-  width: 200px;
-  /* line-height: 150px; */
-  background-color: red;
+  height: 255px;
+  width: 215px;
+  background-color: #00cbec;
   left: 650px;
   margin-top: 25px;
 }
 .level1 {
-  height: 270px;
-  width: 220px;
-  /* line-height: 180px; */
-  background-color: green;
+  height: 285px;
+  width: 235px;
+  background-color: red;
   left: 500px;
   margin-top: 10px;
 }
 .level0 {
-  height: 290px;
-  width: 240px;
-  /* line-height: 200px; */
-  background-color: blue;
+  height: 305px;
+  width: 255px;
+  background-color: #a112ff;
   left: 330px;
 }
 .level-1 {
-  height: 270px;
-  width: 220px;
-  /* line-height: 180px; */
-  background-color: purple;
+  height: 285px;
+  width: 235px;
+  background-color: green;
   margin-top: 10px;
   left: 180px;
 }
 .level-2 {
-  height: 240px;
-  width: 200px;
-  /* line-height: 150px; */
-  background-color: orange;
+  height: 255px;
+  width: 215px;
+  background-color: #ff5543;
   margin-top: 25px;
   left: 50px;
 }

@@ -17,13 +17,13 @@ const EmployeeCard = ({ employee }: EmployeeCardProps) => {
       <div className={styles.employeeInfo}>
         <div className={styles.name}>
           {employee.preferredName ? (
-            <p className={styles.employeeName} onClick={() => setModal(true)}>
+            <a className={styles.employeeName} onClick={() => setModal(true)}>
               {employee.preferredName + " " + employee.lastName}
-            </p>
+            </a>
           ) : (
-            <p className={styles.employeeName} onClick={() => setModal(true)}>
+            <a className={styles.employeeName} onClick={() => setModal(true)}>
               {employee.firstName + " " + employee.lastName}
-            </p>
+            </a>
           )}
         </div>
         <div className={styles.jobDetails}>

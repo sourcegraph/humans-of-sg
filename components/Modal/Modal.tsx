@@ -16,53 +16,69 @@ const Modal = ({ setModal, employee }: ModalProps) => {
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modalBody}>
           <div className={styles.modalLeftPanel}>
-            <div className="employeePhoto">
-              <img src={employee.photoUrl} />
-            </div>
-            <div className="employeeLinks">
-              <p>hi, Im test link #1</p>
-              <p>hi, Im test link #2</p>
+            <div className={styles.leftPanelItemsContainer}>
+              <div className={styles.employeePhotoContainer}>
+                <img src={employee.photoUrl} className={styles.employeePhoto} />
+              </div>
+              <div className={styles.employeeLinks}>
+                <p>Github- {employee.customGitHub}</p>
+                <p>Twitter</p>
+                <p>Instagram</p>
+                <p>hi, Im test link #4</p>
+              </div>
             </div>
           </div>
           <div className={styles.modalRightPanel}>
-            <div className={styles.employeeInfo}>
-              <span className={styles.employeeInfoText}>
-                {employee.preferredName
-                  ? employee.preferredName + " " + employee.lastName
-                  : employee.firstName + " " + employee.lastName}
-                {employee.customPronouns
-                  ? "," + " " + employee.customPronouns
-                  : null}
-              </span>
+            <div className={styles.rightPanelItemsContainer}>
+              <div className={styles.employeeInfo}>
+                <span className={styles.employeeInfoText}>
+                  {employee.preferredName
+                    ? employee.preferredName + " " + employee.lastName
+                    : employee.firstName + " " + employee.lastName}
+                  {employee.customPronouns
+                    ? "," + " " + employee.customPronouns
+                    : null}
+                </span>
 
-              <br></br>
-              <span className={styles.employeeInfoText}>
-                {employee.department}
-              </span>
-              <br></br>
-              <span className={styles.employeeInfoText}>
-                {employee.jobTitle}
-              </span>
-              <br></br>
-              <span className={styles.employeeInfoText}>
-                {employee.hireDate}
-              </span>
-              <br></br>
-            </div>
-            <div className={styles.employeeBio}>
-              <p className={styles.employeeBioText}>
-                hi, Im a test bio. hi, Im a test bio. hi, Im a test bio. hi, Im
-                a test bio!! Yes, thats right! Im a test bio and I love it. Lets
-                see what happens as my bio gets longer! Oh wow! Its behaving as
-                expected
-              </p>
+                <br></br>
+                <span className={styles.employeeInfoText}>
+                  {employee.department}
+                </span>
+                <br></br>
+                <span className={styles.employeeInfoText}>
+                  {employee.jobTitle}
+                </span>
+                <br></br>
+                <span className={styles.employeeInfoText}>
+                  {employee.hireDate}
+                </span>
+                <br></br>
+              </div>
+              <div className={styles.employeeBio}>
+                <p className={styles.employeeBioText}>
+                  hi, Im a test bio. hi, Im a test bio. hi, Im a test bio. hi,
+                  Im a test bio!! Yes, thats right! Im a test bio and I love it.
+                  Lets see what happens as my bio gets longer! Oh wow! Its
+                  behaving as expected
+                </p>
+              </div>
+              <div className={styles.hashtags}>
+                <p className={styles.hashtagsText}>
+                  #hashtag1, #hashtag2, #hashtag3
+                </p>
+              </div>
+
+              <div className={styles.buttonContainer}>
+                <button
+                  className={styles.button}
+                  onClick={onClose}
+                  type="button"
+                >
+                  close
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.modalFooter}>
-          <button className={styles.button} onClick={onClose} type="button">
-            close
-          </button>
         </div>
       </div>
     </div>

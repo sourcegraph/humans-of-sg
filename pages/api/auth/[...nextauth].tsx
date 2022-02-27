@@ -8,8 +8,8 @@ const options = {
     Providers.Okta({
       idToken: true,
       clientId: process.env.OKTA_CLIENTID,
-      domain: process.env.OKTA_DOMAIN + "/oauth2",
-      // domain: process.env.OKTA_DOMAIN,
+      // domain: process.env.OKTA_DOMAIN + "/oauth2",
+      domain: process.env.OKTA_DOMAIN,
 
       protection: ["pkce", "state"],
     }),

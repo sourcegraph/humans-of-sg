@@ -14,6 +14,7 @@ As this project grows, we expect to be able to...
 
 ## To do
 
+- Make responsive
 - Make the site more 'profile like'
 - Add to the Sourcegraph repository
 - Add Sourcegraph designs and components

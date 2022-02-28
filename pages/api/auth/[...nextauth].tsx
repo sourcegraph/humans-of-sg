@@ -16,6 +16,7 @@ const options = {
     }),
   ],
 };
+//fix
 
 export default (req: NextApiRequest, res: NextApiResponse) =>
   NextAuth(req, res, options);

@@ -14,7 +14,6 @@ const options = {
       // domain: process.env.OKTA_DOMAIN,
       protection: ["pkce", "state"],
     }),
-    // ...add more providers here
   ],
 };
 

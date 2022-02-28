@@ -110,7 +110,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
             <Col sm={9}>
               {selectedDivision ? null : (
                 <div className={styles.noDepartmentClickText}>
-                  <p> Click a division name :)</p>
+                  <p> &larr; Select a division</p>
                 </div>
               )}
 
@@ -149,4 +149,5 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
     </>
   );
 };
+
 export default AllEmployees;

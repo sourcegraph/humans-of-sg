@@ -25,12 +25,12 @@
 }
 
 .noDepartmentClickText {
-  text-align: center;
-  justify-content: center;
   font-size: 40px;
-  align-content: center;
-  align-items: baseline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.tesxting {
-  background-color: red;
+
+.hideTabContent {
+  display: none;
 }

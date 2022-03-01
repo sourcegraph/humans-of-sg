@@ -35,7 +35,8 @@
 .level2 {
   height: 285px;
   width: 245px;
-  background-color: #00cbec;
+  background-color: #fff;
+  border: 1px solid #dbe2f0;
   left: 650px;
   margin-top: 25px;
   display: flex;
@@ -44,7 +45,8 @@
 .level1 {
   height: 330px;
   width: 265px;
-  background-color: red;
+  background-color: #fff;
+  border: 1px solid #dbe2f0;
   left: 500px;
   margin-top: 10px;
   display: flex;
@@ -53,7 +55,8 @@
 .level0 {
   height: 350px;
   width: 285px;
-  background-color: #a112ff;
+  background-color: #fff;
+  border: 1px solid #dbe2f0;
   left: 330px;
   display: flex;
 }
@@ -61,7 +64,8 @@
 .level-1 {
   height: 330px;
   width: 265px;
-  background-color: green;
+  background-color: #fff;
+  border: 1px solid #dbe2f0;
   margin-top: 10px;
   left: 180px;
   display: flex;
@@ -70,7 +74,8 @@
 .level-2 {
   height: 285px;
   width: 245px;
-  background-color: #ff5543;
+  background-color: #fff;
+  border: 1px solid #dbe2f0;
   margin-top: 25px;
   left: 50px;
   display: flex;

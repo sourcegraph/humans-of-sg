@@ -10,13 +10,13 @@
   justify-content: center;
 }
 
-.modalContent {
-  width: 530px;
-  height: 360px;
+.modalContainer {
   background-color: #fff;
   border: 1px solid #dbe2f0;
   border-radius: 10px;
   display: flex;
+  justify-content: space-around;
+  max-width: 600px;
 }
 
 .modalHeader,
@@ -24,20 +24,11 @@
   padding: 10px;
 }
 
-.modalTitle {
-  margin: 0;
-}
-
-.modalBody {
-  display: flex;
-  padding: 10px;
-  justify-content: space-evenly;
-}
-
 .modalLeftPanel {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 15px;
 }
 
 .employeePhotoContainer {
@@ -53,10 +44,11 @@
 
 .modalRightPanel {
   display: flex;
-  justify-content: space-between;
-  width: 65%;
+  /* justify-content: space-between; */
+  /* width: 65%; */
   align-items: center;
-  /* padding: 20px; */
+  min-width: fit-content;
+  padding: 15px;
 }
 
 .leftPanelItemsContainer,
@@ -65,11 +57,10 @@
   flex-direction: column;
 }
 
-.rightPanelContainer {
-}
-
 .employeeInfo {
   text-align: left;
+  overflow-wrap: break-word;
+  max-width: 350px;
 }
 
 .employeeInfoText {
@@ -87,6 +78,8 @@
   padding: 0 15px 0 15px;
   margin-bottom: 0;
   padding: 20px 0 20px 0;
+  font-size: small;
+  overflow-wrap: anywhere;
 }
 
 .hashtags {

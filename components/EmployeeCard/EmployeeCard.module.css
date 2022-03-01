@@ -7,6 +7,10 @@
   border-radius: 10px;
 }
 
+.employeeName:hover {
+  cursor: pointer;
+}
+
 .photoContainer {
   display: flex;
   justify-content: center;

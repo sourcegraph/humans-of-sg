@@ -181,6 +181,7 @@ export async function getServerSideProps() {
         (employee: { [key: string]: any }) => employee.status != "Inactive",
       ),
     )
+
     .catch((err) => console.error(err));
 
   return {

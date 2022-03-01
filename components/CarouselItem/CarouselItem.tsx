@@ -30,7 +30,7 @@ const CarouselItem = ({ level, employee }: CarouselItemProps) => {
             {new Date(employee.hireDate).getDate()}
           </p>
 
-          <p className={styles.employeeInfoText}>hashtag1, hashtag2, hastag3</p>
+          <p className={styles.employeeInfoText}>#hashtags coming soon</p>
         </div>
       </div>
     </>

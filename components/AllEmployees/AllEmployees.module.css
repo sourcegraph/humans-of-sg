@@ -18,17 +18,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px 20px;
+  overflow: scroll;
+  height: 600px;
 }
 
 .active {
   background-color: #0d6efd;
-}
-
-.noDepartmentClickText {
-  font-size: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .hideTabContent {

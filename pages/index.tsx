@@ -178,7 +178,9 @@ export async function getServerSideProps() {
     .then((response) => response.json())
     .then((data) =>
       data.employees.filter(
-        (employee: { [key: string]: any }) => employee.status != "Inactive",
+        (employee: { [key: string]: any }) =>
+          employee.status != "Inactive" &&
+          new Date(employee.hireDate) < new Date(),
       ),
     )
 

@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import styles from "./AllEmployees.module.css";
 import { NavDropdown } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
   const [selectedDivision, setSelectedDivision] = useState("");
@@ -109,8 +109,10 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
 
             <Col sm={9}>
               {selectedDivision ? null : (
-                <div className={styles.noDepartmentClickText}>
-                  <p> &larr; Select a division</p>
+                <div className={styles.tabPane}>
+                  {allEmployees.map((employee: { [key: string]: any }) => (
+                    <EmployeeCard employee={employee} key={employee.id} />
+                  ))}
                 </div>
               )}
 
@@ -121,7 +123,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                       <Tab.Pane
                         key={`pane-${index}`}
                         eventKey={`event-${department}-${selectedDivision}`}
-                        className={styles.tabPane}
+                        // className={styles.tabPaneContainer}
                       >
                         <div className={styles.tabPane}>
                           {allEmployees
@@ -130,6 +132,15 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                                 employee.division === selectedDivision &&
                                 employee.department === selectedDepartment,
                             )
+                            .sort(function (
+                              employee1: { [key: string]: any },
+                              employee2: { [key: string]: any },
+                            ) {
+                              return (
+                                new Date(employee2.hireDate).getTime() -
+                                new Date(employee1.hireDate).getTime()
+                              );
+                            })
                             .map((employee: { [key: string]: any }) => (
                               <EmployeeCard
                                 employee={employee}

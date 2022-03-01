@@ -16,7 +16,7 @@
   border-radius: 10px;
   display: flex;
   justify-content: space-around;
-  max-width: 600px;
+  /* max-width: 600px; */
 }
 
 .modalHeader,
@@ -79,7 +79,7 @@
   margin-bottom: 0;
   padding: 20px 0 20px 0;
   font-size: small;
-  overflow-wrap: anywhere;
+  max-width: 50%;
 }
 
 .hashtags {

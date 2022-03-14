@@ -106,7 +106,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
               </Nav>
             </Col>
 
-            <Col sm={9} className={styles.test3}>
+            <Col sm={9}>
               {selectedDivision ? null : (
                 <div className={styles.tabPane}>
                   {allEmployees.map((employee: { [key: string]: any }) => (

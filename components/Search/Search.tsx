@@ -24,7 +24,7 @@ const Search = ({ allEmployees, setActiveSearch }: SearchProps) => {
       <div className={styles.searchContainer}>
         <input
           className={styles.searchBar}
-          placeholder="Search for Employee"
+          placeholder="Search"
           onChange={handleSearchInput}
         />
       </div>

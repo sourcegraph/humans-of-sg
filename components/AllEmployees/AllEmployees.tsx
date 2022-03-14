@@ -59,18 +59,17 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                             count[department] +
                             ")"
                           }
-                          className={
-                            department === selectedDepartment
-                              ? "show"
-                              : "inactive"
-                          }
                           id="offcanvasNavbarDropdown"
+                          bsPrefix={
+                            department === selectedDepartment
+                              ? "show nav-link" + " " + styles.override
+                              : "inactive nav-link" + " " + styles.override
+                          }
                         >
                           {uniqueDivisions.map((division) => {
                             return (
                               <NavDropdown.Item
                                 key={`event-${division}-${index}`}
-                                // href={division}
                                 eventKey={`event-${department}-${division}`}
                                 onClick={() =>
                                   handleDivisionClick(department, division)

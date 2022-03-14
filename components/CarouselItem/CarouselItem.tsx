@@ -26,7 +26,7 @@ const CarouselItem = ({ level, employee }: CarouselItemProps) => {
           ) : null}
 
           <p className={styles.employeeInfoText}>
-            Started on: {+" " + new Date(employee.hireDate).getMonth() + 1}/
+            Start Date: {+" " + new Date(employee.hireDate).getMonth() + 1}/
             {new Date(employee.hireDate).getDate()}
           </p>
 

@@ -1,5 +1,13 @@
 import React from "react";
 import styles from "./Modal.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+  faLinkedin,
+  faGithubSquare,
+  faTwitterSquare,
+  faInstagramSquare,
+} from "@fortawesome/free-brands-svg-icons";
 
 export interface ModalProps {
   setModal: any;
@@ -17,17 +25,26 @@ const Modal = ({ setModal, employee }: ModalProps) => {
         className={styles.modalContainer}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* <div className={styles.modalBody}> */}
         <div className={styles.modalLeftPanel}>
           <div className={styles.leftPanelItemsContainer}>
             <div className={styles.employeePhotoContainer}>
               <img src={employee.photoUrl} className={styles.employeePhoto} />
             </div>
             <div className={styles.employeeLinks}>
-              <p>Github- {employee.customGitHub}</p>
-              <p>TwitterTwitterTwitterTwitterTwitter</p>
-              <p>Instagram</p>
-              <p>hi, Im test link #4</p>
+              <p>
+                <FontAwesomeIcon icon={faLinkedin} size="2x" />- linkedin
+              </p>
+              <p>
+                <FontAwesomeIcon icon={faGithubSquare} size="2x" />-
+                {employee.customGitHub}
+              </p>
+              <p>
+                <FontAwesomeIcon icon={faTwitterSquare} size="2x" />- twitter
+              </p>
+              <p>
+                <FontAwesomeIcon icon={faInstagramSquare} size="2x" />-
+                instagram
+              </p>
             </div>
           </div>
         </div>

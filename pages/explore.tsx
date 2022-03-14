@@ -1,5 +1,11 @@
-const Explore = () => {
-  return <div>hi</div>;
-};
+// import Globe from "../components/Globe/Globe";
 
-export default Explore;
+// const Explore = () => {
+//   return (
+//     <div>
+//       <Globe />
+//     </div>
+//   );
+// };
+
+// export default Explore;

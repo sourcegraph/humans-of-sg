@@ -41,8 +41,8 @@ const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
   return (
     <>
       <Head>
-        <title>H o S</title>
-        <link rel="icon" href="/icon-32.png" />
+        <title>Humans of Sourcegraph</title>
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <Navbar />
       <div className={styles.logo}>

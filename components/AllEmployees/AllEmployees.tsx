@@ -59,18 +59,17 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                             count[department] +
                             ")"
                           }
-                          className={
-                            department === selectedDepartment
-                              ? "show"
-                              : "inactive"
-                          }
                           id="offcanvasNavbarDropdown"
+                          bsPrefix={
+                            department === selectedDepartment
+                              ? "show nav-link" + " " + styles.override
+                              : "inactive nav-link" + " " + styles.override
+                          }
                         >
                           {uniqueDivisions.map((division) => {
                             return (
                               <NavDropdown.Item
                                 key={`event-${division}-${index}`}
-                                // href={division}
                                 eventKey={`event-${department}-${division}`}
                                 onClick={() =>
                                   handleDivisionClick(department, division)
@@ -107,7 +106,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
               </Nav>
             </Col>
 
-            <Col sm={9}>
+            <Col sm={9} className={styles.test3}>
               {selectedDivision ? null : (
                 <div className={styles.tabPane}>
                   {allEmployees.map((employee: { [key: string]: any }) => (

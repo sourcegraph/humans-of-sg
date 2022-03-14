@@ -10,20 +10,20 @@ const EmployeeCard = ({ employee }: EmployeeCardProps) => {
   const [modal, setModal] = React.useState(false);
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={() => setModal(true)}>
       <div className={styles.photoContainer}>
         <img src={employee.photoUrl} className={styles.photo} />
       </div>
       <div className={styles.employeeInfo}>
         <div className={styles.name}>
           {employee.preferredName ? (
-            <a className={styles.employeeName} onClick={() => setModal(true)}>
+            <p className={styles.employeeName}>
               {employee.preferredName + " " + employee.lastName}
-            </a>
+            </p>
           ) : (
-            <a className={styles.employeeName} onClick={() => setModal(true)}>
+            <p className={styles.employeeName}>
               {employee.firstName + " " + employee.lastName}
-            </a>
+            </p>
           )}
         </div>
         <div className={styles.jobDetails}>

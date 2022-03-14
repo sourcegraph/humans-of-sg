@@ -8,7 +8,7 @@
   height: 47%;
 }
 
-.employeeName:hover {
+.card:hover {
   cursor: pointer;
 }
 
@@ -23,6 +23,10 @@
   height: 7em;
 }
 
+.photo:hover {
+  border: 2px solid #8f3fce;
+}
+
 .employeeInfo {
   padding-top: 15%;
 }
@@ -32,9 +36,11 @@
 }
 .employeeName {
   font-weight: bold;
-  color: navy;
+  color: #0b70db;
 }
 
 .jobDetails {
+  padding-top: 10px;
   text-align: center;
+  font-size: small;
 }

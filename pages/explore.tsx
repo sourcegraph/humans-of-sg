@@ -1,11 +1,7 @@
-// import Globe from "../components/Globe/Globe";
+import Globe from "../components/Globe/Globe";
 
-// const Explore = () => {
-//   return (
-//     <div>
-//       <Globe />
-//     </div>
-//   );
-// };
+const Explore = () => {
+  return <div>{/* <Globe /> */}</div>;
+};
 
-// export default Explore;
+export default Explore;

@@ -24,43 +24,45 @@
   padding: 10px;
 }
 
-.modalLeftPanel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 50px;
-}
-
-.employeePhotoContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.employeePhoto {
-  border-radius: 70px;
-  width: 7em;
-  height: 7em;
-}
-
-.modalRightPanel {
-  display: flex;
-  /* justify-content: space-between; */
-  /* width: 65%; */
-  align-items: center;
-  min-width: fit-content;
-  padding: 50px;
-}
-
 .leftPanelItemsContainer,
 .rightPanelItemsContainer {
   display: flex;
   flex-direction: column;
 }
 
+.modalLeftPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.employeePhotoContainer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.employeePhoto {
+  border-radius: 70px;
+  width: 7em;
+  height: 7em;
+  border: 2px solid #8f3fce;
+}
+
+.modalRightPanel {
+  display: flex;
+  align-items: center;
+  min-width: fit-content;
+}
+
 .employeeInfo {
   text-align: left;
   overflow-wrap: break-word;
   max-width: 350px;
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .employeeInfoText {
@@ -68,14 +70,24 @@
   margin-bottom: 0px;
 }
 
-.employeeLinks {
-  padding-top: 11px;
+.socialLinks {
+  padding-top: 15px;
   font-size: small;
   font-style: italic;
   text-align: center;
 }
+
+.socialIcons {
+  padding-right: 7px;
+}
+
+.employeeBio {
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
 .employeeBioText {
-  padding: 0 15px 0 15px;
+  padding: 50px 15px 50px 15px;
   margin-bottom: 0;
   padding: 20px 0 20px 0;
   font-size: small;
@@ -85,25 +97,18 @@
 .hashtags {
   border-bottom: 1px solid #eee;
   display: flex;
+  padding-bottom: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
 }
 
 .hashtagsText {
   font-size: small;
 }
 
-.buttonContainer {
+.xIcon {
   display: flex;
   justify-content: right;
-  margin: 0;
-  padding: 10px;
-}
-
-.button {
-  display: flex;
-  background-color: #0b70db;
-  font-size: 0.875rem;
-  padding: 0.3rem;
-  border: none;
-  color: white;
-  border-radius: 3px;
+  padding-top: 15px;
+  padding-right: 25px;
 }

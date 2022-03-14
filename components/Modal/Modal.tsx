@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./Modal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   faLinkedin,
   faGithubSquare,
   faTwitterSquare,
   faInstagramSquare,
 } from "@fortawesome/free-brands-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export interface ModalProps {
   setModal: any;
@@ -30,26 +30,38 @@ const Modal = ({ setModal, employee }: ModalProps) => {
             <div className={styles.employeePhotoContainer}>
               <img src={employee.photoUrl} className={styles.employeePhoto} />
             </div>
-            <div className={styles.employeeLinks}>
+            <div className={styles.socialLinks}>
               <p>
-                <FontAwesomeIcon icon={faLinkedin} size="2x" />- linkedin
-              </p>
-              <p>
-                <FontAwesomeIcon icon={faGithubSquare} size="2x" />-
-                {employee.customGitHub}
-              </p>
-              <p>
-                <FontAwesomeIcon icon={faTwitterSquare} size="2x" />- twitter
-              </p>
-              <p>
-                <FontAwesomeIcon icon={faInstagramSquare} size="2x" />-
-                instagram
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  className={styles.socialIcons}
+                  size="2x"
+                />
+                <FontAwesomeIcon
+                  icon={faGithubSquare}
+                  className={styles.socialIcons}
+                  size="2x"
+                />
+                {/* {employee.customGitHub} */}
+                <FontAwesomeIcon
+                  icon={faTwitterSquare}
+                  className={styles.socialIcons}
+                  size="2x"
+                />
+                <FontAwesomeIcon
+                  icon={faInstagramSquare}
+                  className={styles.socialIcons}
+                  size="2x"
+                />
               </p>
             </div>
           </div>
         </div>
         <div className={styles.modalRightPanel}>
           <div className={styles.rightPanelItemsContainer}>
+            <div className={styles.xIcon} onClick={onClose}>
+              <FontAwesomeIcon icon={faXmark} />
+            </div>
             <div className={styles.employeeInfo}>
               <span className={styles.employeeInfoText}>
                 {employee.preferredName
@@ -83,12 +95,6 @@ const Modal = ({ setModal, employee }: ModalProps) => {
               <p className={styles.hashtagsText}>
                 #hashtag1, #hashtag2, #hashtag3
               </p>
-            </div>
-
-            <div className={styles.buttonContainer}>
-              <button className={styles.button} onClick={onClose} type="button">
-                close
-              </button>
             </div>
           </div>
         </div>

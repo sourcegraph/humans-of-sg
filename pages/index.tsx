@@ -177,11 +177,22 @@ export async function getServerSideProps() {
   )
     .then((response) => response.json())
     .then((data) =>
-      data.employees.filter(
-        (employee: { [key: string]: any }) =>
-          employee.status != "Inactive" &&
-          new Date(employee.hireDate) < new Date(),
-      ),
+      data.employees
+        .filter(
+          (employee: { [key: string]: any }) =>
+            employee.status != "Inactive" &&
+            new Date(employee.hireDate) < new Date(),
+        )
+
+        .sort(function (
+          employee1: { [key: string]: any },
+          employee2: { [key: string]: any },
+        ) {
+          return (
+            new Date(employee2.hireDate).getTime() -
+            new Date(employee1.hireDate).getTime()
+          );
+        }),
     )
 
     .catch((err) => console.error(err));

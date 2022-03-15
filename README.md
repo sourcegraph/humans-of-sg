@@ -6,17 +6,15 @@ Humans of Sourcegraph is currently being built as an internal tool with a simila
 
 As this project grows, we expect to be able to...
 
-- Bios will likely be collected during onboarding using Bamboo. From there, the bios will be accessed via the API and display in Humans of Sourcegraph with the possility of editing right from the page.
-- Add additional custom fields to bamboo to be collected typically during onboarding. Example: A custom `#hashtags` field where individuals can list their interests the wish to share with the company.
+- Bios will likely be collected during onboarding using Bamboo. From there, the bios will be accessed via the API and display in Humans of Sourcegraph with the option to edit right from the page.
+- Add additional custom fields to bamboo to be collected typically during onboarding. Example: A custom `#hashtags` field where individuals can list their interests they wish to share with the company.
 - Add an 'Explore' section, where you can search for employees by `location`, `#hashtags` (#cooking, #hiking) and more... (possibly add an #EngineeringMentor hashtag to help facilitate exisiting company efforts like pairing mentees and mentors)
 - Internal built in blog? [Beam](https://planetscale.com/blog/introducing-beam)
 - Explore how to integrate HoSG into our handbook and allow for a public version
+- 3D Globe to display the Humans of Sourcegraph all over the world
 
 ## To do
 
-- Make responsive
-- Make the site more 'profile like'
-- Add to the Sourcegraph repository
 - Add Sourcegraph designs and components
 
 ## Development

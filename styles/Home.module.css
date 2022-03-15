@@ -10,6 +10,12 @@
   display: flex;
   justify-content: center;
   background-color: #f9fafb;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.logo:hover {
+  cursor: pointer;
 }
 
 .pageDescription {
@@ -19,6 +25,7 @@
 
 .heavyText {
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 .mutedText {

@@ -37,9 +37,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
 
   return (
     <>
-      <h2 className={styles.allEmployeesHeader}>
-        The {allEmployees.length} Humans of Sourcegraph
-      </h2>
+      <h2 className={styles.allEmployeesHeader}>The Humans of Sourcegraph</h2>
       <div className={styles.divisionTabs}>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
@@ -48,61 +46,47 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                 {Object.keys(departments).map((department, index) => {
                   const divisions: string[] = departments[department];
                   const uniqueDivisions = Array.from(new Set(divisions)).sort();
-                  if (uniqueDivisions.length > 1) {
-                    return (
-                      <>
-                        <NavDropdown
-                          title={
-                            department +
-                            "                  " +
-                            "(" +
-                            count[department] +
-                            ")"
-                          }
-                          id="offcanvasNavbarDropdown"
-                          bsPrefix={
-                            department === selectedDepartment
-                              ? "show nav-link" + " " + styles.override
-                              : "inactive nav-link" + " " + styles.override
-                          }
-                        >
-                          {uniqueDivisions.map((division) => {
-                            return (
-                              <NavDropdown.Item
-                                key={`event-${division}-${index}`}
-                                eventKey={`event-${department}-${division}`}
-                                onClick={() =>
-                                  handleDivisionClick(department, division)
-                                }
-                              >
-                                {division}
-                              </NavDropdown.Item>
-                            );
-                          })}
-                        </NavDropdown>
-                      </>
-                    );
-                  } else {
-                    return (
-                      <Nav.Item key={`nav-${department}`}>
-                        <Nav.Link
-                          className={styles.navLink}
-                          key={`event-${index}`}
-                          eventKey={`event-${department}-Support`}
-                          onClick={() =>
-                            handleDivisionClick(department, "Support")
-                          }
-                        >
-                          {department +
-                            "                  " +
-                            "(" +
-                            count[department] +
-                            ")"}
-                        </Nav.Link>
-                      </Nav.Item>
-                    );
-                  }
+                  return (
+                    <>
+                      <NavDropdown
+                        title={
+                          department +
+                          "                  " +
+                          "(" +
+                          count[department] +
+                          ")"
+                        }
+                        id="offcanvasNavbarDropdown"
+                        bsPrefix={
+                          department === selectedDepartment
+                            ? "show nav-link" + " " + styles.override
+                            : "inactive nav-link" + " " + styles.override
+                        }
+                        onClick={() => setSelectedDepartment(department)}
+                      >
+                        {uniqueDivisions.map((division) => {
+                          return (
+                            <NavDropdown.Item
+                              key={`event-${division}-${index}`}
+                              eventKey={`event-${department}-${division}`}
+                              onClick={() =>
+                                handleDivisionClick(department, division)
+                              }
+                            >
+                              {division}
+                            </NavDropdown.Item>
+                          );
+                        })}
+                      </NavDropdown>
+                    </>
+                  );
                 })}
+
+                <Nav.Item onClick={() => handleDivisionClick("", "")}>
+                  <Nav.Link className={styles.navLink} eventKey={`event-All`}>
+                    All ({allEmployees.length})
+                  </Nav.Link>
+                </Nav.Item>
               </Nav>
             </Col>
 
@@ -114,7 +98,6 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                   ))}
                 </div>
               )}
-
               <Tab.Content>
                 {Object.keys(departments).map((department, index) => {
                   return (
@@ -122,7 +105,6 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                       <Tab.Pane
                         key={`pane-${index}`}
                         eventKey={`event-${department}-${selectedDivision}`}
-                        // className={styles.tabPaneContainer}
                       >
                         <div className={styles.tabPane}>
                           {allEmployees

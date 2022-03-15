@@ -1,8 +1,4 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Navbar from "../components/Navbar/Navbar";
-import Image from "next/image";
-import logo from "../assets/sg_logo.png";
 import AllEmployees from "../components/AllEmployees/AllEmployees";
 import Carousel from "../components/Carousel/Carousel";
 import Search from "../components/Search/Search";
@@ -10,12 +6,12 @@ import Unauthorized from "../components/Unauthorized";
 import { useSession } from "next-auth/client";
 import { useState } from "react";
 
-interface Employee {
+interface IndexProps {
   recentChangeEmployees: { [key: string]: any };
   allEmployees: { [key: string]: any };
 }
 
-const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
+const Home = ({ recentChangeEmployees, allEmployees }: IndexProps) => {
   const [session, loading] = useSession();
   const [activeSearch, setActiveSearch] = useState(false);
 
@@ -40,27 +36,6 @@ const Home = ({ recentChangeEmployees, allEmployees }: Employee) => {
 
   return (
     <>
-      <Head>
-        <title>Humans of Sourcegraph</title>
-        <link rel="shortcut icon" href="/favicon.png" />
-      </Head>
-      <Navbar />
-      <div className={styles.logo}>
-        <Image
-          className={styles.imgComponent}
-          src={logo}
-          alt="Sourcegraph logo"
-          width={320}
-          height={54}
-        />
-      </div>
-      <div className={styles.pageDescription}>
-        <p className={styles.heavyText}>Humans of Sourcegraph</p>
-        <p className={styles.mutedText}>
-          Familiarize yourself with our teammates and organization.
-        </p>
-      </div>
-
       {session ? (
         <>
           <div>
@@ -146,14 +121,12 @@ export async function getServerSideProps() {
         "jobTitle",
         "workEmail",
         "department",
-        // For some reason photoUrl only works if photoUploaded is also requested at the same time
         "photoUploaded",
         "photoUrl",
         "hireDate",
         "status",
         "division",
         "customPronouns",
-        // "customPreferredSurname",
       ],
     }),
   };
@@ -194,7 +167,6 @@ export async function getServerSideProps() {
           );
         }),
     )
-
     .catch((err) => console.error(err));
 
   return {

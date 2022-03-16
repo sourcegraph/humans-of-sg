@@ -30,12 +30,9 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
     departments[department] = [...existingDivisions, division];
   });
 
-  console.log({ selectedDivision, selectedDepartment });
-
   const handleDivisionClick = (department: string, division: string) => {
     setSelectedDepartment(department);
     setSelectedDivision(division);
-    console.log(handleDivisionClick);
   };
 
   return (

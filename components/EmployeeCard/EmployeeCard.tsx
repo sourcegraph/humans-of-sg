@@ -29,7 +29,7 @@ const EmployeeCard = ({ employee }: EmployeeCardProps) => {
         <div className={styles.jobDetails}>
           {/* <p>{employee.department}</p>
           <p>{employee.division}</p> */}
-          <p>{employee.jobTitle}</p>
+          <p className={styles.jobTitle}>{employee.jobTitle}</p>
         </div>
       </div>
       {modal && <Modal setModal={setModal} employee={employee} />}

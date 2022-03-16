@@ -5,7 +5,8 @@
   width: 220px;
   padding: 20px;
   border-radius: 10px;
-  height: 47%;
+  height: 48%;
+  /* height: fit-content; */
 }
 
 .card:hover {
@@ -38,10 +39,21 @@
 .employeeName {
   font-weight: bold;
   color: #0b70db;
+  /* overflow: hidden; */
+  overflow: visible;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  line-height: 1em;
+  max-height: 1em; /* a x number of line to show (ex : 2 line)  */
 }
 
 .jobDetails {
   padding-top: 10px;
   text-align: center;
   font-size: small;
+}
+
+.jobTitle {
+  /* font-size: 10%; */
+  max-height: 1em; /* a x number of line to show (ex : 1 line)  */
 }

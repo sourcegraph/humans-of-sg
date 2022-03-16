@@ -62,7 +62,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                             ? "show nav-link" + " " + styles.override
                             : "inactive nav-link" + " " + styles.override
                         }
-                        onClick={() => setSelectedDepartment(department)}
+                        onClick={() => handleDivisionClick(department, "")}
                       >
                         {uniqueDivisions.map((division) => {
                           return (
@@ -91,13 +91,27 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
             </Col>
 
             <Col sm={9}>
-              {selectedDivision ? null : (
+              {selectedDivision || selectedDepartment ? null : (
                 <div className={styles.tabPane}>
                   {allEmployees.map((employee: { [key: string]: any }) => (
                     <EmployeeCard employee={employee} key={employee.id} />
                   ))}
                 </div>
               )}
+
+              {selectedDepartment && !selectedDivision ? (
+                <div className={styles.tabPane}>
+                  {allEmployees
+                    .filter(
+                      (employee: { [key: string]: any }) =>
+                        employee.department === selectedDepartment,
+                    )
+                    .map((employee: { [key: string]: any }) => (
+                      <EmployeeCard employee={employee} key={employee.id} />
+                    ))}
+                </div>
+              ) : null}
+
               <Tab.Content>
                 {Object.keys(departments).map((department, index) => {
                   return (

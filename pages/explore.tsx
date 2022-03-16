@@ -5,15 +5,21 @@ interface ExploreProps {
 const Explore = ({ employeeLocations }: ExploreProps) => {
   console.log(employeeLocations);
 
-  //   const countries = employeeLocations.map((employee) => {
-  //     const country = employee.country;
-  //     const test = new Set(country);
-  //     return <div>{test}</div>;
-  //   });
-  //   return <div>{countries}</div>;
-  // };
+  // let test = new Set();
 
-  return <div>Coming soon</div>;
+  // const countries = employeeLocations.forEach((employee) => {
+  //   const country = employee.country;
+  //   test.add(country);
+  // });
+
+  // const test2 = Array.from(test).sort();
+
+  // const test3 = test2.map((country) => {
+  //   return <div>{country}</div>;
+  // });
+
+  // return <div>{test3}</div>;
+  return <div>coming soon</div>;
 };
 
 export async function getServerSideProps() {

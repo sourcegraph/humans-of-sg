@@ -34,6 +34,11 @@
 
 .employeeInfoText {
   font-size: small;
+  overflow: visible;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  line-height: 1em;
+  max-height: 1em;
 }
 
 .level2 {

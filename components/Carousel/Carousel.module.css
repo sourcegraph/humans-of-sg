@@ -27,6 +27,11 @@
   padding: 50px;
 }
 
+.arrow:hover {
+  cursor: pointer;
+  color: gray;
+}
+
 .carousel {
   display: flex;
 }

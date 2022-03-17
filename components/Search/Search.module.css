@@ -11,11 +11,16 @@
 .searchBar {
   border-radius: 3px;
   border: 1px solid #dbe2f0;
-  /* font-family: sfmono-regular, consolas, menlo, dejavu sans mono, monospace; */
+  font-family: sfmono-regular, consolas, menlo, dejavu sans mono, monospace;
   text-align: left;
   font-size: 15px;
   padding: 5px;
   width: 10em;
+}
+
+.searchBar:focus {
+  box-shadow: 0 0 0 0.125rem #0f59aa;
+  outline: none;
 }
 
 .tabPane {

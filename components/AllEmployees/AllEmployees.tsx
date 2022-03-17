@@ -92,7 +92,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
             </Col>
 
             <Col sm={9}>
-              {/* {selectedDivision || selectedDepartment ? null : (
+              {selectedDivision || selectedDepartment ? null : (
                 <div className={styles.tabPane}>
                   {allEmployees.map((employee: { [key: string]: any }) => (
                     <EmployeeCard employee={employee} key={employee.id} />
@@ -100,7 +100,7 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                 </div>
               )}
 
-              {selectedDepartment && !selectedDivision ? (
+              {/* {selectedDepartment && !selectedDivision ? (
                 <div className={styles.tabPane}>
                   {allEmployees
                     .filter(
@@ -111,15 +111,15 @@ const AllEmployees = ({ allEmployees }: { [key: string]: any }) => {
                       <EmployeeCard employee={employee} key={employee.id} />
                     ))}
                 </div>
-              ) : null} */}
+              ) : null}
 
-              {selectedDivision ? null : (
+              {selectedDivision ? (
                 <div className={styles.tabPane}>
                   {allEmployees.map((employee: { [key: string]: any }) => (
                     <EmployeeCard employee={employee} key={employee.id} />
                   ))}
                 </div>
-              )}
+              ) : null} */}
 
               <Tab.Content>
                 {Object.keys(departments).map((department, index) => {

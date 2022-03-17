@@ -2,24 +2,31 @@ interface ExploreProps {
   employeeLocations: { [key: string]: any };
 }
 
+//make an object named countrylist
+//for each array entry, save name and country to a variable
+//push the country to the countrylist object as a key
+//if country does not exist, add it as a key
+//if that country exists, add the employee as an item in an array
+
 const Explore = ({ employeeLocations }: ExploreProps) => {
   console.log(employeeLocations);
 
-  // let test = new Set();
+  const countryList = {};
+  employeeLocations.map((employee) => {
+    let employeeName = employee.firstName;
+    let country = employee.country;
+    const namesToACountry = countryList[country] || [];
+    countryList[country] = [...namesToACountry, employeeName];
+  });
 
-  // const countries = employeeLocations.forEach((employee) => {
-  //   const country = employee.country;
-  //   test.add(country);
-  // });
+  console.log(countryList);
 
-  // const test2 = Array.from(test).sort();
+  const countries = Object.keys(countryList).forEach((country) => {
+    console.log(country);
+    <div>{country}</div>;
+  });
 
-  // const test3 = test2.map((country) => {
-  //   return <div>{country}</div>;
-  // });
-
-  // return <div>{test3}</div>;
-  return <div>coming soon</div>;
+  return <div>hi coming soon</div>;
 };
 
 export async function getServerSideProps() {

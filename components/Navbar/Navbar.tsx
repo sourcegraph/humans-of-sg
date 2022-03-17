@@ -5,9 +5,17 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <div className={styles.nav}>
-      {/* <Link href="/explore">Explore</Link> */}
-      {/* <Link href="/blog">Blog</Link>
-      <Link href="/about">About Sourcegraph</Link> */}
+      <ul className={styles.linkList}>
+        {/* <li>
+          <Link href="/explore">Explore</Link>
+        </li> */}
+        {/* <li>
+          <Link href="/blog">Blog</Link>
+        </li>
+        <li>
+          <Link href="/about">About Sourcegraph</Link>
+        </li> */}
+      </ul>
     </div>
   );
 };

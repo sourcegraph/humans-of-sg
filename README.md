@@ -11,6 +11,7 @@ As this project grows, I'd love to add these additional features:
 - Add an 'Explore' section, where you can search for employees by `location`, `#hashtags` (#cooking, #hiking) and more... (possibly add an #EngineeringMentor hashtag to help facilitate exisiting company efforts to pair mentees and mentors)
 - Internal built in blog? [Beam](https://planetscale.com/blog/introducing-beam)
 - Explore how to integrate HoSG into our handbook and allow for a public version
+- Org chart
 - 3D Globe to display the Humans of Sourcegraph all over the world
 
 ## To do

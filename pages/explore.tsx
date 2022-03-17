@@ -9,22 +9,22 @@ interface ExploreProps {
 //if that country exists, add the employee as an item in an array
 
 const Explore = ({ employeeLocations }: ExploreProps) => {
-  console.log(employeeLocations);
+  // console.log(employeeLocations);
 
-  const countryList = {};
-  employeeLocations.map((employee) => {
-    let employeeName = employee.firstName;
-    let country = employee.country;
-    const namesToACountry = countryList[country] || [];
-    countryList[country] = [...namesToACountry, employeeName];
-  });
+  // const countryList = {};
+  // employeeLocations.map((employee) => {
+  //   let employeeName = employee.firstName;
+  //   let country = employee.country;
+  //   const namesToACountry = countryList[country] || [];
+  //   countryList[country] = [...namesToACountry, employeeName];
+  // });
 
-  console.log(countryList);
+  // console.log(countryList);
 
-  const countries = Object.keys(countryList).forEach((country) => {
-    console.log(country);
-    <div>{country}</div>;
-  });
+  // const countries = Object.keys(countryList).forEach((country) => {
+  //   console.log(country);
+  //   <div>{country}</div>;
+  // });
 
   return <div>hi coming soon</div>;
 };
